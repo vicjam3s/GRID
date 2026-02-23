@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -48,9 +49,9 @@ class Subtopic(models.Model):
     title = models.CharField(max_length=150)
     order = models.PositiveIntegerField()
 
-    class Meta:
-        ordering = ["order"]
-        unique_together = ("topic", "title")
+    def clean(self):
+        if self.topic.subject.course != self.topic.subject.course:
+            raise ValidationError("Invalid topic hierarchy")
 
     def __str__(self):
         return self.title

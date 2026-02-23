@@ -14,7 +14,7 @@ def health_check(request):
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("health/", health_check),
+    path("health/", health_check),#practice run
 
     # API endpoints (app-level routing)
     path("api/auth/", include("users.urls")),
