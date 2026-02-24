@@ -19,8 +19,6 @@ urlpatterns = [
     # API endpoints (app-level routing)
     path("api/auth/", include("users.urls")),
     path("api/syllabus/", include("syllabus.urls")),
-
-    # later:
-    # path("api/content/", include("content.urls")),
-    # path("api/assessments/", include("assessments.urls")),
+    path("api/content/", include("content.urls")),
+    path("api/exams/", include("assessments.urls")),
 ]
