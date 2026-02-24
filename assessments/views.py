@@ -11,6 +11,7 @@ from .serializers import (
     ExamSubmitSerializer,
 )
 from progress.models import ExamAttempt, QuestionAttempt
+from django.conf import settings
 
 
 class GenerateExamView(APIView):
@@ -94,7 +95,7 @@ class SubmitExamView(APIView):
             )
 
         score_percent = int((correct_count / len(answers)) * 100)
-        passed = score_percent >= 75
+        passed = score_percent >= settings.EXAM_PASS_MARK_PERCENT
 
         exam.score = score_percent
         exam.passed = passed
