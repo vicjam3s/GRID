@@ -12,3 +12,6 @@ class ExamHistorySerializer(serializers.ModelSerializer):
             "passed",
             "created_at",
         )
+
+class ExamRetakeSerializer(serializers.Serializer):
+    exam_id = serializers.IntegerField()

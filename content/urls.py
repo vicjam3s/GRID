@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ContentUploadView, SubtopicNotesView
+from .views import *
 
 urlpatterns = [
     path("upload/", ContentUploadView.as_view(), name="content_upload"),
