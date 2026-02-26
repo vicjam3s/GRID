@@ -264,7 +264,230 @@ PPL_SYLLABUS = {
         ],
     },
 
-    
+    "Mass and Balance": {
+        "01 Fundamentals and Terminology": [
+            "Mass Definitions (BEM, DOM, ZFM, MTOM, MLM)",
+            "The Datum and Arms (Reference line and distance from datum)",
+            "Moments (Weight × Arm)",
+        ],
+
+        "02 Loading and Calculations": [
+            "Floor Loading Limits (PSI / kg per square meter)",
+            "Baggage Compartment Limits",
+            "CG Calculation (Total moment ÷ Total mass)",
+        ],
+
+        "03 CG Limits and Shifting": [
+            "Forward and Aft Limits (Stability vs Controllability)",
+            "Mass Addition and Removal (Effect on new CG)",
+            "Mass Shifting Formula",
+        ],
+    },
+
+    "Aircraft Performance": {
+        "01 Takeoff and Landing Theory": [
+            "Distances (TORA, TODA, ASDA, LDA)",
+            "Balanced Field Concept (Clearway / Stopway)",
+            "Ground Effect (Reduced induced drag during rotation)",
+        ],
+
+        "02 Performance Charts (The Graphs)": [
+            "Reading Nomograms (Start at Temperature → Pressure Altitude → Weight)",
+            "Wind Correction (Headwind vs Tailwind components)",
+            "Surface Correction (Grass, Slope, Contamination)",
+        ],
+
+        "03 Climb and Cruise Performance": [
+            "Vx (Best angle) vs Vy (Best rate)",
+            "Service Ceiling vs Absolute Ceiling",
+            "Fuel Flow vs Power Settings (RPM / Mixture)",
+        ],
+    },
+
+    "Flight Planning": {
+        "01 VFR Navigation Planning": [
+            "Chart Work (Plotting tracks, measuring distances)",
+            "Magnetic Variation (True vs Magnetic tracks)",
+            "Wind Correction (Using CRP-1 for Heading and Groundspeed)",
+        ],
+
+        "02 Fuel Planning and Policy": [
+            "Fuel Components (Taxi, Trip, Contingency, Reserve)",
+            "Endurance Calculations (Safe time in the air)",
+            "Fuel Density and Weights (Avgas vs Jet A1)",
+        ],
+
+        "03 The Operational Flight Plan (OFP)": [
+            "The Nav Log (Step-by-step waypoint recording)",
+            "Point of Equal Time (PET) and Point of No Return (PNR)",
+            "Safety Altitudes (Minimum Safe Altitude – MSA)",
+        ],
+
+        "04 ICAO Flight Plan (CA-48)": [
+            "Form Submission Procedures (Filing, Opening, Closing)",
+            "Item Codes (Equipment, Wake Turbulence, Endurance)",
+        ],
+    },
+
+    "General Navigation": {
+        "01 Earth and Geometry": [
+            "Coordinate System (Latitude/Longitude, Great Circles, Rhumb Lines)",
+            "Distance Units (Nautical Miles vs Statute Miles vs Kilometers)",
+            "Directions (True, Magnetic, Compass, and Grid North)",
+        ],
+
+        "02 Aviation Charts": [
+            "Projections (Lambert’s Conformal vs Mercator)",
+            "Topography (Relief, Spot heights, Contours)",
+            "Map Scale (1:500,000 Sectional vs 1:1,000,000)",
+        ],
+
+        "03 Time and Astronomy": [
+            "UTC (Zulu) vs Local Time (LMT)",
+            "Arc to Time Conversion (15° equals 1 hour)",
+            "Sunrise and Sunset (Civil twilight definitions)",
+        ],
+
+        "04 The Dead Reckoning (DR) Triangle": [
+            "Triangle of Velocities (Heading, Track, Wind)",
+            "Vector Math (Wind side of the CRP-1)",
+            "Circular Slide Rule (Calculator side of the CRP-1)",
+        ],
+
+        "05 The 1-in-60 Rule": [
+            "Track Error Calculations (Angle off vs Angle to regain)",
+            "Estimating ETAs (Groundspeed corrections)",
+        ],
+    },
+
+    "Radio Navigation": {
+        "01 Basic Radio Theory": [
+            "Properties of Radio Waves (Frequency, Wavelength, Phase)",
+            "Wave Propagation (Ground, Sky, and Space waves)",
+            "Frequency Bands (LF, MF, VHF, UHF)",
+        ],
+
+        "02 Point-to-Point Navigation": [
+            "VDF (Direction Finding: QDM, QDR, QTE)",
+            "NDB / ADF (Non-Directional Beacon: Relative vs Magnetic bearings)",
+            "VOR (VHF Omnidirectional Range: Radials and Phase comparison)",
+        ],
+
+        "03 Distance and Precision Aids": [
+            "DME (Distance Measuring Equipment: Slant range)",
+            "ILS (Instrument Landing System: Localizer and Glide path)",
+            "Marker Beacons (Outer, Middle, Inner)",
+        ],
+
+        "04 Satellite and Radar": [
+            "GNSS / GPS (Segments, RAIM, Errors)",
+            "SSR (Secondary Surveillance Radar: Transponder codes)",
+            "TCAS (Traffic Collision Avoidance System basics)",
+        ],
+    },
+
+    "Meteorology": {
+        "01 The Atmosphere": [
+            "Atmospheric Layers",
+            "Temperature Lapse Rates",
+            "ISA Standard Atmosphere",
+            "Pressure Systems",
+            "Atmospheric Features",
+            "Isobars",
+        ],
+
+        "02 Wind and Air Motion": [
+            "Pressure Gradient Force",
+            "Coriolis Force",
+            "Surface Friction",
+            "Sea and Land Breezes",
+            "Anabatic and Katabatic Winds",
+            "Mountain Waves",
+            "Wind Shear",
+        ],
+
+        "03 Thermodynamics and Moisture": [
+            "Humidity and Dew Point",
+            "Latent Heat",
+            "Adiabatic Processes",
+            "Stable Air",
+            "Unstable Air",
+        ],
+
+        "04 Clouds and Precipitation": [
+            "High-Level Clouds",
+            "Medium-Level Clouds",
+            "Low-Level Clouds",
+            "Vertical Development Clouds",
+            "Precipitation Types",
+        ],
+
+        "05 Visibility and Icing": [
+            "Radiation Fog",
+            "Advection Fog",
+            "Mist, Haze, and Smoke",
+            "Rime Ice",
+            "Clear Ice",
+            "Hoar Frost",
+        ],
+
+        "06 Fronts and Air Masses": [
+            "Air Mass Types",
+            "Warm Fronts",
+            "Cold Fronts",
+            "Occluded and Stationary Fronts",
+        ],
+
+        "07 Weather Documentation and Coding": [
+            "METAR",
+            "TAF",
+            "SPECI",
+            "Significant Weather Charts",
+            "Upper Wind and Temperature Charts",
+            "Satellite and Radar Imagery",
+        ],
+    },
+
+    "Communications (Radiotelephony)": {
+        "01 VHF Propagation and Theory": [
+            "Radio Wave Properties",
+            "VHF Frequency Spectrum",
+            "Radio Wave Propagation",
+            "Factors Affecting Range",
+        ],
+
+        "02 General Operating Procedures": [
+            "Microphone Technique",
+            "Transmission Structure",
+            "Standard Prowords",
+            "Phonetic Alphabet",
+            "Numbers Pronunciation",
+            "Time and Frequency Use",
+        ],
+
+        "03 VFR Phraseology and Standard Calls": [
+            "Aerodrome Control Procedures",
+            "Circuit Calls",
+            "En-Route Position Reporting",
+            "Flight Information Service (FIS)",
+            "Arrival and Landing Procedures",
+        ],
+
+        "04 Emergency and Urgency Procedures": [
+            "Distress Calls (MAYDAY)",
+            "Urgency Calls (PAN-PAN)",
+            "Loss of Communication Procedures",
+            "Emergency Frequencies",
+            "Visual ATC Signals",
+        ],
+
+        "05 Radionavigation and Surveillance": [
+            "Navigation Aid Identification",
+            "Radar Services",
+            "SSR Transponder Modes",
+        ],
+    },
+
 }
 
 
