@@ -4,16 +4,30 @@ from syllabus.models import Course, Subject, Topic, Subtopic
 
 PPL_SYLLABUS = {
     "Air Law": {
-        "Rules of the Air": [
-            "Right of Way",
-            "Visual Flight Rules",
-            "Controlled and Uncontrolled Airspace",
+        "International Agreements & Organizations": [
+            "Chicago Convention",
+            "ICAO Structure",
+            "National Aviation Law (Kenya)",
         ],
-        "Air Traffic Services": [
-            "ATC Responsibilities",
-            "Pilot Responsibilities",
+        "Personnel Licensing (ICAO Annex 1)": [
+            "PPL Privileges & Limitations",
+            "Medical Certification",
+        ],
+        "Rules of the Air (ICAO Annex 2)": [
+            "General Rules",
+            "Avoidance of Collisions",
+            "VFR Weather Minima",
+        ],
+        "Air Traffic Services (ICAO Annex 11)": [
+            "Airspace Classification",
+            "ATS Services",
+        ],
+        "Aerodromes (ICAO Annex 14)": [
+            "Markings & Lighting",
+            "Aerodrome Signals",
         ],
     },
+
     "Navigation": {
         "Charts and Publications": [
             "Aeronautical Charts",
@@ -31,6 +45,7 @@ CPL_SYLLABUS = {
         ],
     },
 }
+
 
 class Command(BaseCommand):
     help = "Seed PPL and CPL syllabus for GRID"
