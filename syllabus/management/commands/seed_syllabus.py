@@ -99,6 +99,64 @@ PPL_SYLLABUS = {
             "Stress Management (Arousal levels and performance)",
         ],
     },
+
+    "Principles of Flight": {
+        "01 Subsonic Aerodynamics": [
+            "Laws of Motion (Newton’s 1st, 2nd, and 3rd Laws)",
+            "Bernoulli’s Principle (Static vs Dynamic pressure)",
+            "Venturi Effect (Velocity increase, Pressure decrease)",
+            "Air Properties (Density, Pressure, Temperature, Humidity)",
+            "Airfoil Geometry (Chord line, Camber, Leading/Trailing edge)",
+            "Angle of Attack (Alpha – α) vs Angle of Incidence",
+            "Stagnation Point (Flow separation points)",
+            "Center of Pressure (CP movement with Alpha)",
+            "Lift (Coefficient of Lift CL, Surface area, Velocity squared)",
+            "Weight (Gravity, Centre of Gravity location)",
+            "Thrust (Propeller wash, Slipstream effect)",
+            "Drag (Drag equation, CD vs CL curves)",
+        ],
+
+        "02 Drag Phenomena": [
+            "Parasite Drag – Form Drag (Shape/Profile of the object)",
+            "Parasite Drag – Skin Friction (Boundary layer: Laminar vs Turbulent)",
+            "Parasite Drag – Interference Drag (Wing-to-fuselage intersections)",
+            "Induced Drag (Wingtip vortices and downwash)",
+            "Aspect Ratio (High AR vs Low AR efficiency)",
+            "Ground Effect (Reduction of induced drag within one wingspan)",
+        ],
+
+        "03 Stability and Control": [
+            "Static Stability (Positive, Neutral, Negative)",
+            "Longitudinal Stability (Pitch – Stabilizer and Elevator)",
+            "Lateral Stability (Roll – Dihedral, High-wing vs Low-wing)",
+            "Directional Stability (Yaw – Vertical fin and Rudder)",
+            "Dynamic Stability (Damped vs Divergent oscillations)",
+            "Spiral Instability vs Dutch Roll",
+            "Aerodynamic Balance (Horns, Inset hinges)",
+            "Mass Balance (Weights to prevent control flutter)",
+            "Adverse Yaw (Differential and Frise ailerons)",
+        ],
+
+        "04 Stalling and Spinning": [
+            "Critical Angle of Attack (Typically 15°–18°)",
+            "Boundary Layer Separation (Turbulent wake)",
+            "Stall Warnings (Buffeting, Reed horns)",
+            "Wing Drop (Asymmetric stalling)",
+            "Spin Requirements (Stalled wing with yaw and autorotation)",
+            "Spin Phases (Incipient, Developed, Recovery)",
+            "Standard Spin Recovery (PARE: Power, Ailerons, Rudder, Elevator)",
+        ],
+
+        "05 Flight Mechanics and Loading": [
+            "Turns (Centripetal force and horizontal component of lift)",
+            "Load Factor (G-load in turns: n = 1 / cos θ)",
+            "Climbing and Descending Flight (Forces in non-level flight)",
+            "V–n Diagram (Structural limits and flight envelope)",
+            "Limit Load vs Ultimate Load",
+            "Va – Maneuvering Speed (Definition and calculation)",
+            "Vne – Never Exceed Speed (Structural failure limit)",
+        ],
+    },
 }
 
 
