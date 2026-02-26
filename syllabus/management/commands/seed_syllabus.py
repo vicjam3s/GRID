@@ -157,6 +157,114 @@ PPL_SYLLABUS = {
             "Vne – Never Exceed Speed (Structural failure limit)",
         ],
     },
+
+    "Airframe and Structures": {
+        "01 Structural Design": [
+            "Stress Types (Tension, Compression, Torsion, Shear, Bending)",
+            "Construction Methods (Monocoque, Semi-monocoque, Truss/Pruss)",
+            "Major Components (Fuselage, Wings, Empennage, Undercarriage)",
+        ],
+
+        "02 Materials": [
+            "Alloys (Aluminum-copper / Duralumin)",
+            "Composites (Glass fiber, Carbon fiber, resins)",
+            "Corrosion (Stress corrosion, Galvanic / Dissimilar metal)",
+        ],
+
+        "03 Primary and Secondary Controls": [
+            "Control Surfaces (Ailerons, Elevator, Rudder)",
+            "Trim Systems (Fixed tab, Adjustable tab, Anti-servo)",
+            "Flaps (Plain, Split, Slotted, Fowler)",
+        ],
+
+        "04 Landing Gear and Braking": [
+            "Configurations (Taildragger vs Tricycle)",
+            "Shock Absorption (Oleo struts, Bungee, Spring steel)",
+            "Braking Systems (Hydraulic disc brakes, Master cylinders)",
+        ],
+    },
+
+    "Powerplant (Piston Engines)": {
+        "01 Engine Architecture": [
+            "Components (Cylinders, Pistons, Connecting rods, Crankshaft, Camshaft)",
+            "The 4-Stroke Cycle (Otto Cycle: Suck, Squeeze, Bang, Blow)",
+            "Valve Operation (Timing, Overlap, Tappet clearances)",
+        ],
+
+        "02 Fuel and Induction": [
+            "Carburetion (Venturi principle, Mixture control)",
+            "Carb Icing (Impact ice, Throttle ice, Fuel evaporation ice)",
+            "Fuel Injection (Advantages vs carbureted engines)",
+        ],
+
+        "03 Ignition and Electrical Power": [
+            "Dual Magnetos (Independent from aircraft electrical system)",
+            "Spark Plugs (Fouling, Heat ranges)",
+            "Ignition Timing (Advance/Retard, Detonation, Pre-ignition)",
+        ],
+
+        "04 Lubrication and Cooling": [
+            "Oil System (Wet vs Dry sump, Pressure relief valves, Viscosity)",
+            "Air Cooling (Baffles, Cooling fins, Cowl flaps)",
+        ],
+
+        "05 Propellers": [
+            "Propeller Principles (Blade angle, Angle of Attack, Blade twist)",
+            "Constant Speed Propellers (Governor, Flyweights, Oil pressure control)",
+        ],
+    },
+
+    "DC Electrical Systems": {
+        "01 Fundamentals and Generation": [
+            "Basic Units (Voltage, Amperage, Resistance, Ohms Law)",
+            "Alternators vs Generators (AC vs DC production)",
+            "Voltage Regulation (Maintaining ~28V in a 24V system)",
+        ],
+
+        "02 Storage and Batteries": [
+            "Lead-Acid vs Nickel-Cadmium (Ni-Cad)",
+            "Battery Capacity (Amp-hours)",
+            "Thermal Runaway (Specifically for Ni-Cad batteries)",
+        ],
+
+        "03 Distribution and Protection": [
+            "Busbars (Primary, Avionics, Essential)",
+            "Circuit Breakers vs Fuses (Resetting vs Replacing)",
+            "Master Switch (Single vs Split / Double rocker)",
+        ],
+
+        "04 Monitoring and Faults": [
+            "Ammeter vs Loadmeter (Charging indication vs Total load)",
+            "Over-voltage Sensors",
+            "Electrical Fire Procedures (Isolate the source)",
+        ],
+    },
+
+    "Instrumentation": {
+        "01 The Pitot-Static System": [
+            "Pitot Probe (Total / Stagnation pressure)",
+            "Static Port (Ambient / Atmospheric pressure)",
+            "Altimeter (Aneroid wafers, Sub-scale settings, Hysteresis)",
+            "Airspeed Indicator (Diaphragm, Differential pressure, Color arcs)",
+            "Vertical Speed Indicator (VSI) (Calibrated leak, Lag error)",
+        ],
+
+        "02 Gyroscopic Instruments": [
+            "Gyro Principles (Rigidity in space, Precession)",
+            "Power Sources (Engine-driven vacuum pump vs Electrical)",
+            "Attitude Indicator (Artificial horizon / Earth gyro)",
+            "Heading Indicator (Directional gyro, Apparent drift)",
+            "Turn Coordinator / Turn Indicator (Rate of turn, Slip / Skid ball)",
+        ],
+
+        "03 Magnetism and the Compass": [
+            "Earth’s Magnetic Field (Dip, Variation)",
+            "Compass Construction (Pivot, Liquid damping, Expansion bellows)",
+            "Compass Errors (Deviation, Acceleration / Deceleration, Turning)",
+        ],
+    },
+
+    
 }
 
 
