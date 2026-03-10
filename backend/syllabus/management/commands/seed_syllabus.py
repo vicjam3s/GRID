@@ -4,12 +4,12 @@ from syllabus.models import Course, Subject, Topic, Subtopic
 
 PPL_SYLLABUS = {
     "Air Law": {
-        "01 International Agreements & Organizations": [
+        "01 ICAO and Civil Aviation Law": [
             "Chicago Convention",
             "ICAO Structure",
             "National Aviation Law (Kenya)",
         ],
-        "02 Personnel Licensing (ICAO Annex 1)": [
+        "02 Operation of aircraft": [
             "PPL Privileges & Limitations",
             "Medical Certification",
         ],
