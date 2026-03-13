@@ -1,5 +1,4 @@
-AIRLAW_NOTES = [
-
+NOTES = [
 {
 "subtopic": "ICAO and Civil Aviation Law",
 "title": "Introduction to ICAO",
@@ -204,9 +203,7 @@ In Kenya this is done through the Civil Aviation Act and the
 Kenya Civil Aviation Authority (KCAA), which regulates civil aviation
 and ensures compliance with international aviation standards.
 """
-}
-
-]
+},
 
 {
 "subtopic": "Operation of Aircraft",
@@ -589,7 +586,7 @@ limitations section of the aircraft manufacturer's manual
 must be performed according to those instructions
 or other procedures approved by the aviation authority.
 """
-}
+},
 
 {
 "subtopic": "Rules of the Air",
@@ -905,6 +902,7 @@ to ensure safety in case of engine failure.
 """
 },
 
+
 {
 "subtopic": "Rules of the Air",
 "title": "Formation Flying",
@@ -1048,7 +1046,7 @@ and cloud clearance requirements
 to ensure safe separation from terrain
 and other aircraft.
 """
-}
+},
 
 {
 "subtopic": "Visual Flight Rules",
@@ -1158,7 +1156,7 @@ below the normal VFR minima.
 Special VFR operations require ATC clearance
 and are subject to additional restrictions.
 """
-}
+},
 
 {
 "subtopic": "Signals",
@@ -1335,7 +1333,7 @@ When intercepted, the pilot of a civil aircraft must:
 Failure to comply with interception instructions
 may be considered a violation of airspace regulations.
 """
-}
+},
 
 {
 "subtopic": "Regulations of Air Traffic Services",
@@ -1487,7 +1485,7 @@ In such situations the pilot must take appropriate action
 to ensure the safety of the aircraft and its occupants,
 while informing air traffic services as soon as possible.
 """
-}
+},
 
 {
 "subtopic": "Aerodromes",
@@ -1752,7 +1750,8 @@ These groupings may depend on:
 • Available navigation aids
 • Level of rescue and firefighting services
 """
-}
+},
+
 {
 "subtopic": "Air Traffic Services",
 "title": "Air Traffic Services System",
@@ -2036,7 +2035,7 @@ This may include:
 • navigation warnings
 • traffic information
 """
-}
+},
 
 {
 "subtopic": "Flight Crew Licences and Ratings",
@@ -2237,7 +2236,7 @@ Examples include:
 These ratings specify the aircraft types
 that the pilot is qualified to operate.
 """
-}
+},
 
 {
 "subtopic": "Offences and Penalties",
@@ -2393,3 +2392,5 @@ safety will not be compromised and when special
 circumstances justify the exemption.
 """
 }
+
+]

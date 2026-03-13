@@ -1,4 +1,4 @@
-#section 1 : Aerodrome operating minima
+NOTES = [
 
 {
 "subtopic": "Flight Preparation",
@@ -98,7 +98,7 @@ for a specified period.
 The records are normally kept for a minimum period
 of three months.
 """
-}
+},
 
 # Section 2: Flight Preparation
 
@@ -271,7 +271,7 @@ Approximate altitude thresholds include:
 Oxygen must be available for both crew and passengers
 when operating at these altitudes.
 """
-}
+},
 
 #Section 3 : Operrational flight planning
 
@@ -353,7 +353,7 @@ at the destination aerodrome becomes impossible or inadvisable.
 The alternate must meet the required aerodrome operating minima
 for the expected arrival time.
 """
-}
+},
 
 #Section 4: Fuel and Oil Requirements
 {
@@ -525,7 +525,7 @@ Appropriate oxygen equipment must be available
 for both crew and passengers when operating
 at these altitudes.
 """
-}
+},
 
 #Section 5: Passenger Safety and Crew Duties
 
@@ -667,7 +667,7 @@ for safe aircraft operation.
 Crew members must communicate clearly and cooperate
 to ensure that all operational procedures are followed.
 """
-}
+},
 
 #Section 6: ETOPS & Aircraft Performance
 
@@ -812,7 +812,7 @@ These calculations take into account:
 • atmospheric conditions
 • obstacle clearance requirements
 """
-}
+},
 
 # Section 7: Aircraft Instruments & Emergency Equipment
 
@@ -945,7 +945,7 @@ Proper training ensures that emergency
 equipment can be used effectively
 during emergency situations.
 """
-}
+},
 
 # Section 8: Special Equipment & Special Operations
 
@@ -1082,3 +1082,5 @@ Pilots must monitor weather conditions
 and avoid severe icing areas whenever possible.
 """
 }
+
+]

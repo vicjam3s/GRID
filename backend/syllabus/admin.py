@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Course, Subject, Topic, Subtopic
+from .models import Course, Subject, Topic, Subtopic, Note
 
 
 class ReadOnlyAdmin(admin.ModelAdmin):
@@ -42,3 +42,11 @@ class SubtopicAdmin(ReadOnlyAdmin):
     list_display = ("title", "topic", "order")
     ordering = ("topic", "order")
     list_filter = ("topic__subject__course", "topic__subject")
+
+
+@admin.register(Note)
+class NoteAdmin(admin.ModelAdmin):
+    list_display = ("title", "subtopic", "created_at")
+    search_fields = ("title", "content")
+    list_filter = ("subtopic__topic__subject__course", "subtopic__topic__subject", "subtopic")
+    readonly_fields = ("created_at",)

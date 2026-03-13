@@ -1,9 +1,8 @@
 from django.db import models
-from django.core.exceptions import ValidationError
 
-# Create your models here.
 
 class Course(models.Model):
+
     COURSE_CHOICES = (
         ("PPL", "Private Pilot Licence"),
         ("CPL", "Commercial Pilot Licence"),
@@ -19,8 +18,15 @@ class Course(models.Model):
 
 
 class Subject(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="subjects")
+
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name="subjects"
+    )
+
     name = models.CharField(max_length=100)
+
     order = models.PositiveIntegerField()
 
     class Meta:
@@ -32,8 +38,15 @@ class Subject(models.Model):
 
 
 class Topic(models.Model):
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name="topics")
+
+    subject = models.ForeignKey(
+        Subject,
+        on_delete=models.CASCADE,
+        related_name="topics"
+    )
+
     title = models.CharField(max_length=150)
+
     order = models.PositiveIntegerField()
 
     class Meta:
@@ -45,13 +58,40 @@ class Topic(models.Model):
 
 
 class Subtopic(models.Model):
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="subtopics")
+
+    topic = models.ForeignKey(
+        Topic,
+        on_delete=models.CASCADE,
+        related_name="subtopics"
+    )
+
     title = models.CharField(max_length=150)
+
     order = models.PositiveIntegerField()
 
-    def clean(self):
-        if self.topic.subject.course != self.topic.subject.course:
-            raise ValidationError("Invalid topic hierarchy")
+    class Meta:
+        ordering = ["order"]
+        unique_together = ("topic", "title")
 
     def __str__(self):
         return self.title
+
+class Note(models.Model):
+
+    subtopic = models.ForeignKey(
+        Subtopic,
+        on_delete=models.CASCADE,
+        related_name="notes"
+    )
+
+    title = models.CharField(max_length=200)
+
+    content = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["subtopic", "title"]
+
+    def __str__(self):
+        return self.title    
