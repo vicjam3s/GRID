@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'exports',
     'common',
     'analytics',
+    'corsheaders',
 
 ]
 
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'PROJECT.urls'
@@ -147,3 +149,4 @@ USE_TZ = True
 STATIC_URL = 'static/'
 AUTH_USER_MODEL = "users.User"
 EXAM_PASS_MARK_PERCENT = 80
+CORS_ALLOW_ALL_ORIGINS = True
