@@ -66,65 +66,81 @@ export default function Dashboard() {
       </div>
 
       {/* GRID CAPABILITIES SECTION */}
-      <div style={styles.featuresSection}>
+<div style={styles.featuresSection}>
 
-        <h2 style={styles.featuresTitle}>GRID Capabilities</h2>
+  <div style={styles.featuresContainer}>
 
-        <div style={styles.featuresGrid}>
+    <h2 style={styles.featuresTitle}>GRID Capabilities</h2>
 
-          <div style={styles.featureCard}>
-            <h3>Structured Learning</h3>
-            <p>
-              Aviation subjects organised into clear modules including
-              navigation, meteorology, air law and aircraft performance.
-            </p>
-          </div>
+    <div style={styles.featuresGrid}>
 
-          <div style={styles.featureCard}>
-            <h3>Practice Examinations</h3>
-            <p>
-              Prepare for aviation exams using structured question banks
-              designed to simulate real test environments.
-            </p>
-          </div>
-
-          <div style={styles.featureCard}>
-            <h3>Flight Route Planning</h3>
-            <p>
-              Build and manage flight routes with an interactive aviation
-              map and waypoint navigation tools.
-            </p>
-          </div>
-
-          <div style={styles.featureCard}>
-            <h3>Aerodrome Intelligence</h3>
-            <p>
-              Access detailed aerodrome information including frequencies,
-              airspace structures and operational data.
-            </p>
-          </div>
-
-          <div style={styles.featureCard}>
-            <h3>Live Flight Tracking</h3>
-            <p>
-              Monitor aircraft movements and follow flight paths in real
-              time during navigation.
-            </p>
-          </div>
-
-          <div style={styles.featureCard}>
-            <h3>Navigation Tools</h3>
-            <p>
-              Advanced planning utilities for route building, navigation
-              logs and situational awareness during flight operations.
-            </p>
-          </div>
-
+      <div style={{...styles.featureCard, ...styles.cardLearning}} className="featureCard">
+        <div style={styles.cardOverlay}>
+          <h3 style={styles.featureTitle}>Structured Learning</h3>
+          <p style={styles.featureText}>
+            Aviation subjects organised into structured modules including
+            navigation, meteorology, air law and aircraft performance.
+          </p>
         </div>
+      </div>
 
+      <div style={{...styles.featureCard, ...styles.cardExams}} className="featureCard">
+        <div style={styles.cardOverlay}>
+          <h3 style={styles.featureTitle}>Practice Examinations</h3>
+          <p style={styles.featureText}>
+            Prepare for aviation exams using structured question banks
+            designed to simulate real testing environments.
+          </p>
+        </div>
+      </div>
+
+      <div style={{...styles.featureCard, ...styles.cardPlanning}} className="featureCard">
+        <div style={styles.cardOverlay}>
+          <h3 style={styles.featureTitle}>Flight Route Planning</h3>
+          <p style={styles.featureText}>
+            Build and manage flight routes using an interactive aviation
+            map with waypoint navigation tools.
+          </p>
+        </div>
+      </div>
+
+      <div style={{...styles.featureCard, ...styles.cardAerodrome}} className="featureCard">
+        <div style={styles.cardOverlay}>
+          <h3 style={styles.featureTitle}>Aerodrome Intelligence</h3>
+          <p style={styles.featureText}>
+            Access aerodrome information including frequencies,
+            airspace structures and operational details.
+          </p>
+        </div>
+      </div>
+
+      <div style={{...styles.featureCard, ...styles.cardTracking}} className="featureCard">
+        <div style={styles.cardOverlay}>
+          <h3 style={styles.featureTitle}>Live Flight Tracking</h3>
+          <p style={styles.featureText}>
+            Monitor aircraft movements and follow flight paths in
+            real time during navigation.
+          </p>
+        </div>
+      </div>
+
+      <div style={{...styles.featureCard, ...styles.cardNavigation}} className="featureCard">
+        <div style={styles.cardOverlay}>
+          <h3 style={styles.featureTitle}>Navigation Tools</h3>
+          <p style={styles.featureText}>
+            Advanced planning utilities including navigation logs,
+            route building and situational awareness tools.
+          </p>
+        </div>
       </div>
 
     </div>
+
+  </div>
+
+</div>
+</div>
+
   );
 }
 
@@ -260,30 +276,85 @@ const styles = {
     animation: "moveRoute 18s linear infinite"
   },
 
-  featuresSection: {
-    padding: "80px 60px",
-    textAlign: "center"
-  },
+featuresSection: {
+  padding: "100px 80px",
+  textAlign: "center"
+},
 
-  featuresTitle: {
-    fontSize: "40px",
-    marginBottom: "50px",
-    color: "#2E2E2E"
-  },
+featuresTitle: {
+  fontSize: "42px",
+  marginBottom: "60px",
+  color: "#2E2E2E",
+  fontWeight: "600"
+},
 
-  featuresGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "30px"
-  },
+featuresGrid: {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "35px"
+},
 
-  featureCard: {
-    padding: "25px",
-    borderRadius: "14px",
-    background: "rgba(255,255,255,0.35)",
-    backdropFilter: "blur(10px)",
-    boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
-    textAlign: "left"
-  }
+featureCard: {
+  height: "200px",
+  borderRadius: "16px",
+  overflow: "hidden",
+  position: "relative",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  cursor: "pointer",
+  transition: "transform 0.35s ease, box-shadow 0.35s ease",
+  boxShadow: "0 10px 30px rgba(0,0,0,0.15)"
+},
+
+cardOverlay: {
+  position: "absolute",
+  inset: 0,
+  padding: "25px",
+  background: "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65))",
+  color: "white",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-end"
+},
+
+featureTitle: {
+  fontSize: "20px",
+  marginBottom: "8px"
+},
+
+featureText: {
+  fontSize: "14px",
+  lineHeight: "1.4"
+},
+
+cardLearning: {
+  backgroundImage:
+    "url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d')"
+},
+
+cardExams: {
+  backgroundImage:
+    "url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b')"
+},
+
+cardPlanning: {
+  backgroundImage:
+    "url('https://images.unsplash.com/photo-1504198458649-3128b932f49b')"
+},
+
+cardAerodrome: {
+  backgroundImage:
+    "url('https://images.unsplash.com/photo-1493238792000-8113da705763')"
+},
+
+cardTracking: {
+  backgroundImage:
+    "url('https://images.unsplash.com/photo-1474302770737-173ee21bab63')"
+},
+
+cardNavigation: {
+  backgroundImage:
+    "url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')"
+},
 
 };
