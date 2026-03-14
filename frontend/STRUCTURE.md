@@ -60,13 +60,21 @@ GRID
 
  -----------------------------------------------------
 |                                                     |
-|              GRID Aviation Platform                 |
+|                    GRID                             |
 |                                                     |
-|   [ E-Learning ]            [ Flight Planning ]     |
+|   ┌────────────────┐  ┌──────────────────────────┐  |
+|   │                │  │                          │  |
+|   │   E-Learning   │  │     Flight Planning      │  |
+|   │                │  │                          │  |
+|   │ Study modules  │  │ Route builder            │  |
+|   │ Practice MCQs  │  │ Aviation map             │  |
+|   │ Mock exams     │  │ Live tracking            │  |
+|   │                │  │                          │  |
+|   │    ENTER →     │  │        ENTER →           │  |
+|   │                │  │                          │  |
+|   └────────────────┘  └──────────────────────────┘  |
 |                                                     |
-|  Study for aviation exams     Plan real flights     |
-|                                                     |
- -----------------------------------------------------    
+ -----------------------------------------------------   
 
 
 
