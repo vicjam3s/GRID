@@ -345,12 +345,12 @@ cardExams: {
 
 cardPlanning: {
   backgroundImage:
-    "url('https://images.unsplash.com/photo-1504198458649-3128b932f49b')"
+    "url('https://images.unsplash.com/photo-1529070538774-1843cb3265df')"
 },
 
 cardAerodrome: {
   backgroundImage:
-    "url('https://images.unsplash.com/photo-1493238792000-8113da705763')"
+    "url('https://images.unsplash.com/photo-1508444845599-5c89863b1c44')"
 },
 
 cardTracking: {
