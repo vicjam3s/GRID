@@ -291,11 +291,12 @@ featuresTitle: {
 featuresGrid: {
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "35px"
+  gap: "30px",
+  justifyItems: "stretch"
 },
 
 featureCard: {
-  height: "200px",
+  height: "220px",
   borderRadius: "16px",
   overflow: "hidden",
   position: "relative",
@@ -306,11 +307,16 @@ featureCard: {
   boxShadow: "0 10px 30px rgba(0,0,0,0.15)"
 },
 
+featuresContainer: {
+  maxWidth: "1200px",
+  margin: "0 auto"
+},
+
 cardOverlay: {
   position: "absolute",
   inset: 0,
-  padding: "25px",
-  background: "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65))",
+  padding: "28px",
+  background: "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.7))",
   color: "white",
   display: "flex",
   flexDirection: "column",
