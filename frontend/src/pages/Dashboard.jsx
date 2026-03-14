@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 export default function Dashboard() {
-
-  const [hovered, setHovered] = useState(null);
-
   return (
     <div style={styles.page}>
+
+      {/* Animated aviation background */}
+      <div style={styles.routes}>
+        <div style={styles.route}></div>
+        <div style={styles.route2}></div>
+      </div>
 
       <div style={styles.header}>
         <h1 style={styles.title}>GRID</h1>
@@ -17,25 +19,17 @@ export default function Dashboard() {
 
       <div style={styles.splitContainer}>
 
-        <div
-          style={{
-            ...styles.panel,
-            ...styles.learning,
-            flex: hovered === "learning" ? 1.2 : 1
-          }}
-          onMouseEnter={() => setHovered("learning")}
-          onMouseLeave={() => setHovered(null)}
-        >
-
+        {/* LEARNING PANEL */}
+        <div style={{ ...styles.panel, ...styles.learning }}>
           <div style={styles.glassCard}>
 
             <h2 style={styles.panelTitle}>E-Learning</h2>
 
             <p style={styles.panelText}>
               Study aviation theory through structured modules covering
-              navigation, meteorology, air law, performance and aircraft
-              systems. Practice exam questions, review notes and monitor
-              learning progress as you prepare for aviation examinations.
+              navigation, meteorology, air law, aircraft performance and
+              operational procedures. Practice exam questions and track
+              your learning progress as you prepare for aviation exams.
             </p>
 
             <Link to="/learning">
@@ -45,28 +39,19 @@ export default function Dashboard() {
             </Link>
 
           </div>
-
         </div>
 
-        <div
-          style={{
-            ...styles.panel,
-            ...styles.flight,
-            flex: hovered === "flight" ? 1.2 : 1
-          }}
-          onMouseEnter={() => setHovered("flight")}
-          onMouseLeave={() => setHovered(null)}
-        >
-
+        {/* FLIGHT PANEL */}
+        <div style={{ ...styles.panel, ...styles.flight }}>
           <div style={styles.glassCard}>
 
             <h2 style={styles.panelTitle}>Flight Planning</h2>
 
             <p style={styles.panelText}>
-              Plan and manage flights using an interactive aviation map.
-              View aerodrome information, build routes, monitor flights
-              in real time and organise saved navigation plans for
-              training or operational use.
+              Plan and manage flights using an interactive aviation map
+              with aerodrome information, navigation tools and route
+              building features. Monitor flights in real time and save
+              routes for training or operational use.
             </p>
 
             <Link to="/flight">
@@ -75,6 +60,64 @@ export default function Dashboard() {
               </button>
             </Link>
 
+          </div>
+        </div>
+
+      </div>
+
+      {/* GRID CAPABILITIES SECTION */}
+      <div style={styles.featuresSection}>
+
+        <h2 style={styles.featuresTitle}>GRID Capabilities</h2>
+
+        <div style={styles.featuresGrid}>
+
+          <div style={styles.featureCard}>
+            <h3>Structured Learning</h3>
+            <p>
+              Aviation subjects organised into clear modules including
+              navigation, meteorology, air law and aircraft performance.
+            </p>
+          </div>
+
+          <div style={styles.featureCard}>
+            <h3>Practice Examinations</h3>
+            <p>
+              Prepare for aviation exams using structured question banks
+              designed to simulate real test environments.
+            </p>
+          </div>
+
+          <div style={styles.featureCard}>
+            <h3>Flight Route Planning</h3>
+            <p>
+              Build and manage flight routes with an interactive aviation
+              map and waypoint navigation tools.
+            </p>
+          </div>
+
+          <div style={styles.featureCard}>
+            <h3>Aerodrome Intelligence</h3>
+            <p>
+              Access detailed aerodrome information including frequencies,
+              airspace structures and operational data.
+            </p>
+          </div>
+
+          <div style={styles.featureCard}>
+            <h3>Live Flight Tracking</h3>
+            <p>
+              Monitor aircraft movements and follow flight paths in real
+              time during navigation.
+            </p>
+          </div>
+
+          <div style={styles.featureCard}>
+            <h3>Navigation Tools</h3>
+            <p>
+              Advanced planning utilities for route building, navigation
+              logs and situational awareness during flight operations.
+            </p>
           </div>
 
         </div>
@@ -88,18 +131,21 @@ export default function Dashboard() {
 const styles = {
 
   page: {
-    height: "100vh",
+    minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
     fontFamily: "system-ui",
+    paddingBottom: "80px",
     background:
-      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)"
+      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)",
   },
 
   header: {
     textAlign: "center",
     paddingTop: "60px",
-    paddingBottom: "40px"
+    paddingBottom: "40px",
+    position: "relative",
+    zIndex: 2
   },
 
   title: {
@@ -116,9 +162,10 @@ const styles = {
   },
 
   splitContainer: {
-    flex: 1,
     display: "flex",
-    transition: "all 0.4s ease"
+    minHeight: "520px",
+    position: "relative",
+    zIndex: 2
   },
 
   panel: {
@@ -127,17 +174,16 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     padding: "40px",
-    transition: "all 0.4s ease"
   },
 
   learning: {
     background:
-      "linear-gradient(135deg,#FF9E8A 0%, #FFB7A5 100%)"
+      "linear-gradient(135deg,#FF9E8A 40%, #ffb7a5ef 100%)"
   },
 
   flight: {
     background:
-      "linear-gradient(135deg,#2E2E2E 0%, #3A3A3A 100%)"
+      "linear-gradient(135deg,#2E2E2E 0%, #3a3a3ae9 100%)"
   },
 
   glassCard: {
@@ -180,6 +226,64 @@ const styles = {
     color: "white",
     fontWeight: "600",
     cursor: "pointer"
+  },
+
+  routes: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    zIndex: 1,
+    overflow: "hidden"
+  },
+
+  route: {
+    position: "absolute",
+    width: "120%",
+    height: "2px",
+    background: "rgba(255,255,255,0.3)",
+    top: "40%",
+    left: "-10%",
+    transform: "rotate(12deg)",
+    animation: "moveRoute 12s linear infinite"
+  },
+
+  route2: {
+    position: "absolute",
+    width: "120%",
+    height: "2px",
+    background: "rgba(255,255,255,0.2)",
+    top: "65%",
+    left: "-10%",
+    transform: "rotate(-8deg)",
+    animation: "moveRoute 18s linear infinite"
+  },
+
+  featuresSection: {
+    padding: "80px 60px",
+    textAlign: "center"
+  },
+
+  featuresTitle: {
+    fontSize: "40px",
+    marginBottom: "50px",
+    color: "#2E2E2E"
+  },
+
+  featuresGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "30px"
+  },
+
+  featureCard: {
+    padding: "25px",
+    borderRadius: "14px",
+    background: "rgba(255,255,255,0.35)",
+    backdropFilter: "blur(10px)",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+    textAlign: "left"
   }
 
 };
