@@ -45,12 +45,14 @@ GRID
 │   ├── Practice MCQs
 │   └── Mock Exams
 │
-└── Flight Planning
-    ├── Map
-    ├── Route Builder
-    ├── Weather
-    ├── Weight & Balance
-    └── Navigation Log
+└──Flight Planner
+    │
+    ├── Aviation Map
+    ├── Aerodrome Database
+    ├── Route Planning
+    ├── Live Flight Tracking
+    ├── Navigation Mode
+    └── Saved Routes
 
 
 
@@ -126,6 +128,19 @@ Subjects
  -----------------------------------------------------
 
 
+ ---------------------------------------------------
+| Search Bar                                       |
+|--------------------------------------------------|
+| Sidebar |                MAP                     |
+|         |                                        |
+| Routes  |                                        |
+| Layers  |                                        |
+| Nav Log |                                        |
+|         |                                        |
+ ---------------------------------------------------
+
+
+
 User clicks airports.
 
 Example:
@@ -171,3 +186,163 @@ glassmorphism
 soft shadows
 rounded corners
 minimal text
+
+
+
+
+Map must support layers like:
+
+Airspaces
+Control zones
+Aerodromes
+Navigation aids
+Cities
+Terrain
+Flight routes
+Weather
+Aircraft position
+
+
+
+Best react libraries:
+
+Mapbox GL
+or
+Leaflet(Simpler)
+
+
+
+When clicking an airport on the map:
+
+Panel opens:
+
+HKJK – Jomo Kenyatta Intl
+
+Elevation: 5330 ft
+
+Runways
+---------
+06/24 – 4117m
+
+Frequencies
+-----------
+Tower: 118.7
+Ground: 121.9
+ATIS: 127.2
+
+Airspace
+--------
+Class C CTR
+
+
+-Data sources later could include:
+
+Kenya Civil Aviation Authority
+
+OpenStreetMap
+
+OpenAIP
+
+
+User should be able to search:
+
+HKJK
+Nairobi
+Mount Kenya
+Lake Victoria
+Malindi
+
+
+Search categories:
+
+Aerodromes
+Cities
+Towns
+Physical features
+Navaids
+Waypoints
+
+User should be able to save routes like:
+
+Training Flight
+HKJK → HKEL
+
+or
+
+Coastal Route
+HKJK → HKMO → HKML
+
+Database stores:
+
+route_name
+waypoints
+distance
+created_by
+
+
+Live Flight Tracking
+This requires ADS-B data.
+Possible sources:
+
+Flightradar24
+
+OpenSky Network
+
+
+
+
+Aircraft position updates:
+
+Latitude
+Longitude
+Altitude
+Heading
+Groundspeed
+
+Display aircraft icon moving on map.
+
+
+
+
+
+Navigation Mode (In-Flight)
+
+When flying:
+
+Aircraft GPS position
+Route line
+Distance to waypoint
+Groundspeed
+ETA
+
+Example display:
+
+Distance to next waypoint: 24 NM
+Groundspeed: 115 KT
+ETA: 13:42
+
+
+Map Layers
+
+You will want toggles:
+
+✔ Aerodromes
+✔ Control Zones
+✔ Airspaces
+✔ Cities
+✔ Terrain
+✔ Waypoints
+
+
+
+--Important Warning
+
+Your project will eventually need real aviation datasets. Thes come from AIPS.
+
+For Kenya you will likely need:
+
+Aerodrome coordinates
+Runways
+Frequencies
+Airspaces
+Waypoints
