@@ -21,7 +21,7 @@ export default function Dashboard() {
 
         {/* LEARNING PANEL */}
         <div style={{ ...styles.panel, ...styles.learning }}>
-          <div style={styles.glassCard}>
+          <div style={styles.glassCard} className="glass-card-hover">
 
             <h2 style={styles.panelTitle}>E-Learning</h2>
 
@@ -33,7 +33,7 @@ export default function Dashboard() {
             </p>
 
             <Link to="/learning">
-              <button style={styles.button}>
+              <button style={styles.button} className="program-button">
                 Enter Learning
               </button>
             </Link>
@@ -43,7 +43,7 @@ export default function Dashboard() {
 
         {/* FLIGHT PANEL */}
         <div style={{ ...styles.panel, ...styles.flight }}>
-          <div style={styles.glassCard}>
+          <div style={styles.glassCard} className="glass-card-hover">
 
             <h2 style={styles.panelTitle}>Flight Planning</h2>
 
@@ -55,7 +55,7 @@ export default function Dashboard() {
             </p>
 
             <Link to="/flight">
-              <button style={styles.buttonDark}>
+              <button style={styles.buttonDark} className="program-button">
                 Open Planner
               </button>
             </Link>
@@ -179,7 +179,7 @@ const styles = {
 
   splitContainer: {
     display: "flex",
-    minHeight: "520px",
+    minHeight: "380px",
     position: "relative",
     zIndex: 2
   },
@@ -187,9 +187,9 @@ const styles = {
   panel: {
     flex: 1,
     display: "flex",
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center",
-    padding: "40px",
+    padding: "30px",
   },
 
   learning: {
@@ -204,24 +204,29 @@ const styles = {
 
   glassCard: {
     maxWidth: "420px",
-    padding: "35px",
+    padding: "25px",
     borderRadius: "16px",
     background: "rgba(255,255,255,0.25)",
     backdropFilter: "blur(12px)",
     WebkitBackdropFilter: "blur(12px)",
     boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
-    color: "white"
+    color: "white",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    flex: 1,
+    transition: "all 0.35s ease"
   },
 
   panelTitle: {
-    fontSize: "36px",
-    marginBottom: "20px"
+    fontSize: "32px",
+    marginBottom: "12px"
   },
 
   panelText: {
-    fontSize: "16px",
-    lineHeight: "1.6",
-    marginBottom: "25px"
+    fontSize: "15px",
+    lineHeight: "1.5",
+    marginBottom: "15px"
   },
 
   button: {
@@ -231,7 +236,8 @@ const styles = {
     background: "white",
     color: "#FF8A73",
     fontWeight: "600",
-    cursor: "pointer"
+    cursor: "pointer",
+    transition: "all 0.3s ease"
   },
 
   buttonDark: {
@@ -241,6 +247,7 @@ const styles = {
     background: "#FF9E8A",
     color: "white",
     fontWeight: "600",
+    transition: "all 0.3s ease",
     cursor: "pointer"
   },
 
