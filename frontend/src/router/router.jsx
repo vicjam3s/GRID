@@ -30,6 +30,7 @@ import FlightDashboard from "../pages/flight/Dashboard";
 import FlightPlanner from "../pages/flight/FlightPlanner";
 import Aerodromes from "../pages/flight/Aerodromes";
 import AerodromeDetail from "../pages/flight/AerodromeDetail";
+import Routes from "../pages/flight/Routes";
 
 
 export const router = createBrowserRouter([
@@ -132,6 +133,11 @@ export const router = createBrowserRouter([
   {
     path: "/flight/aerodromes/:icao",
     element: <AerodromeDetail />,
+  },
+
+  {
+    path: "/flight/routes",
+    element: <Routes />,
   },
 
 ]);

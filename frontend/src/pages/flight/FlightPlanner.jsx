@@ -52,7 +52,7 @@ export default function FlightPlanner() {
         {/* MAP AREA */}
 
         <div style={styles.mapArea}>
-          <MapView />
+          <MapView departure={departure} destination={destination} />
         </div>
 
       </div>
