@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MapView from "../../components/flight/MapView";
 
 export default function FlightPlanner() {
 
@@ -51,11 +52,7 @@ export default function FlightPlanner() {
         {/* MAP AREA */}
 
         <div style={styles.mapArea}>
-
-          <div style={styles.mapPlaceholder}>
-            Aviation Map (coming next)
-          </div>
-
+          <MapView />
         </div>
 
       </div>

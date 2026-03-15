@@ -28,6 +28,8 @@ import CPLExam from "../pages/learning/cpl/Exam";
 
 import FlightDashboard from "../pages/flight/Dashboard";
 import FlightPlanner from "../pages/flight/FlightPlanner";
+import Aerodromes from "../pages/flight/Aerodromes";
+import AerodromeDetail from "../pages/flight/AerodromeDetail";
 
 
 export const router = createBrowserRouter([
@@ -123,13 +125,13 @@ export const router = createBrowserRouter([
   },
 
   {
-    path: "/learning/ppl/subjects",
-    element: <PPLSubjects />,
+    path: "/flight/aerodromes",
+    element: <Aerodromes />,
   },
 
   {
-    path: "/learning/ppl/subjects/:id",
-    element: <PPLSubjectDetail />,
+    path: "/flight/aerodromes/:icao",
+    element: <AerodromeDetail />,
   },
 
 ]);
