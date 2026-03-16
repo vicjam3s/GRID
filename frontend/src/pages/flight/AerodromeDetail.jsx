@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function AerodromeDetail() {
 
@@ -6,6 +6,10 @@ export default function AerodromeDetail() {
 
   return (
     <div style={styles.page}>
+
+      <Link to="/flight/aerodromes" style={styles.backButton} className="back-button">
+        ← Back to Aerodromes
+      </Link>
 
       <div style={styles.header}>
         <h1 style={styles.title}>{icao}</h1>
@@ -95,6 +99,21 @@ const styles = {
 
   subtitle: {
     color: "#555"
+  },
+
+  backButton: {
+    display: "inline-block",
+    marginBottom: "40px",
+    padding: "10px 20px",
+    background: "rgba(255, 255, 255, 0.8)",
+    color: "#2E2E2E",
+    textDecoration: "none",
+    borderRadius: "8px",
+    fontWeight: "600",
+    fontSize: "14px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    transition: "all 0.3s ease",
+    cursor: "pointer"
   },
 
   layout: {

@@ -30,6 +30,10 @@ export default function Routes() {
   return (
     <div style={styles.page}>
 
+      <Link to="/flight" style={styles.backButton} className="back-button">
+        ← Back to Flight Planning
+      </Link>
+
       <div style={styles.header}>
 
         <h1 style={styles.title}>
@@ -157,6 +161,21 @@ const styles = {
     border: "none",
     background: "#2E2E2E",
     color: "white",
+    cursor: "pointer"
+  },
+
+  backButton: {
+    display: "inline-block",
+    marginBottom: "40px",
+    padding: "10px 20px",
+    background: "rgba(255, 255, 255, 0.8)",
+    color: "#2E2E2E",
+    textDecoration: "none",
+    borderRadius: "8px",
+    fontWeight: "600",
+    fontSize: "14px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    transition: "all 0.3s ease",
     cursor: "pointer"
   }
 

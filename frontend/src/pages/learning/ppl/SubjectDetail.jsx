@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function PPLSubjectDetail() {
 
@@ -14,6 +14,10 @@ export default function PPLSubjectDetail() {
 
   return (
     <div style={styles.page}>
+
+      <Link to="/learning/ppl/subjects" style={styles.backButton} className="back-button">
+        ← Back to Subjects
+      </Link>
 
       <div style={styles.header}>
         <h1 style={styles.title}>{id} — PPL Subject</h1>
@@ -50,12 +54,16 @@ export default function PPLSubjectDetail() {
 
           <div style={styles.actions}>
 
-            <button style={styles.notesButton}>
-              View Notes
+            <button style={styles.primaryButton}>
+              Practice Questions
             </button>
 
-            <button style={styles.quizButton}>
-              Practice Questions
+            <button style={styles.secondaryButton}>
+              Mock Exam
+            </button>
+
+            <button style={styles.tertiaryButton}>
+              Review Incorrect Questions
             </button>
 
           </div>
@@ -137,7 +145,7 @@ const styles = {
     gap: "15px"
   },
 
-  notesButton: {
+  primaryButton: {
     padding: "12px 20px",
     borderRadius: "10px",
     border: "none",
@@ -146,12 +154,36 @@ const styles = {
     cursor: "pointer"
   },
 
-  quizButton: {
+  secondaryButton: {
     padding: "12px 20px",
     borderRadius: "10px",
     border: "none",
     background: "#2E2E2E",
     color: "white",
+    cursor: "pointer"
+  },
+
+  tertiaryButton: {
+    padding: "12px 20px",
+      borderRadius: "10px",
+      border: "none",
+      background: "#555",
+      color: "white",
+      cursor: "pointer"
+  },
+
+  backButton: {
+    display: "inline-block",
+    marginBottom: "40px",
+    padding: "10px 20px",
+    background: "rgba(255, 255, 255, 0.8)",
+    color: "#2E2E2E",
+    textDecoration: "none",
+    borderRadius: "8px",
+    fontWeight: "600",
+    fontSize: "14px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    transition: "all 0.3s ease",
     cursor: "pointer"
   }
 

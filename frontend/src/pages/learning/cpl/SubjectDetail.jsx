@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function CPLSubjectDetail() {
 
@@ -15,6 +15,10 @@ export default function CPLSubjectDetail() {
 
   return (
     <div style={styles.page}>
+
+      <Link to="/learning/cpl/subjects" style={styles.backButton} className="back-button">
+        ← Back to Subjects
+      </Link>
 
       <div style={styles.header}>
         <h1 style={styles.title}>{id} — CPL Subject</h1>
@@ -51,16 +55,16 @@ export default function CPLSubjectDetail() {
 
           <div style={styles.actions}>
 
-            <button style={styles.notesButton}>
-              View Notes
-            </button>
-
-            <button style={styles.quizButton}>
+            <button style={styles.primaryButton}>
               Practice Questions
             </button>
 
-            <button style={styles.examButton}>
+            <button style={styles.secondaryButton}>
               Mock Exam
+            </button>
+
+            <button style={styles.tertiaryButton}>
+              Review Incorrect Questions
             </button>
 
           </div>
@@ -167,6 +171,21 @@ const styles = {
     border: "none",
     background: "#555",
     color: "white",
+    cursor: "pointer"
+  },
+
+  backButton: {
+    display: "inline-block",
+    marginBottom: "40px",
+    padding: "10px 20px",
+    background: "rgba(255, 255, 255, 0.8)",
+    color: "#2E2E2E",
+    textDecoration: "none",
+    borderRadius: "8px",
+    fontWeight: "600",
+    fontSize: "14px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    transition: "all 0.3s ease",
     cursor: "pointer"
   }
 

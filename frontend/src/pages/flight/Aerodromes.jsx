@@ -14,6 +14,10 @@ export default function Aerodromes() {
   return (
     <div style={styles.page}>
 
+      <Link to="/flight" style={styles.backButton} className="back-button">
+        ← Back to Flight Planning
+      </Link>
+
       <h1 style={styles.title}>Aerodrome Information</h1>
 
       <input
@@ -64,11 +68,17 @@ const styles = {
   },
 
   search: {
-    padding: "12px",
-    width: "300px",
-    borderRadius: "8px",
-    border: "1px solid #ddd",
-    marginBottom: "40px"
+    padding: "14px 18px",
+    width: "100%",
+    maxWidth: "500px",
+    fontSize: "16px",
+    borderRadius: "10px",
+    border: "2px solid #FF9E8A",
+    background: "rgba(255,255,255,0.9)",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    marginBottom: "40px",
+    fontFamily: "system-ui",
+    transition: "all 0.3s ease"
   },
 
   grid: {
@@ -104,6 +114,21 @@ const styles = {
   city: {
     fontSize: "14px",
     color: "#555"
+  },
+
+  backButton: {
+    display: "inline-block",
+    marginBottom: "40px",
+    padding: "10px 20px",
+    background: "rgba(255, 255, 255, 0.8)",
+    color: "#2E2E2E",
+    textDecoration: "none",
+    borderRadius: "8px",
+    fontWeight: "600",
+    fontSize: "14px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    transition: "all 0.3s ease",
+    cursor: "pointer"
   }
 
 };
