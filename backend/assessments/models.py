@@ -1,16 +1,7 @@
 from django.db import models
-from syllabus.models import Subtopic
 
-# Create your models here.
 
 class Question(models.Model):
-    DIFFICULTY_CHOICES = (
-        ("EASY", "Easy"),
-        ("MEDIUM", "Medium"),
-        ("HARD", "Hard"),
-    )
-
-    subtopic = models.ForeignKey(Subtopic, on_delete=models.CASCADE, related_name="questions")
 
     question_text = models.TextField()
 
@@ -25,7 +16,6 @@ class Question(models.Model):
     )
 
     explanation = models.TextField(blank=True)
-    difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES)
 
     is_active = models.BooleanField(default=True)
 
