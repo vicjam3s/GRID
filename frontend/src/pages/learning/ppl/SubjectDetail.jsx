@@ -82,8 +82,7 @@ const styles = {
     minHeight: "100vh",
     padding: "60px",
     fontFamily: "system-ui",
-    background:
-      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)"
+    background: "#0F172A"
   },
 
   header: {
@@ -92,7 +91,7 @@ const styles = {
 
   title: {
     fontSize: "36px",
-    color: "#2E2E2E"
+    color: "#F1F5F9"
   },
 
   layout: {
@@ -101,42 +100,52 @@ const styles = {
     gap: "30px"
   },
 
+  // topics sidebar (like syllabus panel)
   sidebar: {
-    background: "rgba(255,255,255,0.7)",
+    background: "rgba(30,41,59,0.9)",
     backdropFilter: "blur(10px)",
     borderRadius: "14px",
     padding: "20px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)"
+    border: "1px solid #334155",
+    boxShadow: "0 12px 40px rgba(0,0,0,0.6)"
   },
 
   sidebarTitle: {
     marginBottom: "20px",
-    fontSize: "18px"
+    fontSize: "18px",
+    color: "#F1F5F9"
   },
 
+  // topic items (interactive list)
   topicItem: {
     padding: "10px",
     borderRadius: "8px",
     marginBottom: "8px",
     cursor: "pointer",
-    background: "rgba(255,255,255,0.5)"
+    background: "#020617",
+    border: "1px solid #1E293B",
+    color: "#CBD5F5",
+    transition: "all 0.25s ease"
   },
 
+  // main content panel
   content: {
-    background: "rgba(255,255,255,0.7)",
+    background: "rgba(30,41,59,0.9)",
     backdropFilter: "blur(10px)",
     borderRadius: "14px",
     padding: "30px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)"
+    border: "1px solid #334155",
+    boxShadow: "0 12px 40px rgba(0,0,0,0.6)"
   },
 
   contentTitle: {
     fontSize: "24px",
-    marginBottom: "12px"
+    marginBottom: "12px",
+    color: "#F1F5F9"
   },
 
   contentText: {
-    color: "#555",
+    color: "#CBD5F5",
     marginBottom: "30px"
   },
 
@@ -145,45 +154,50 @@ const styles = {
     gap: "15px"
   },
 
-  primaryButton: {
+  // unified action buttons
+  notesButton: {
     padding: "12px 20px",
     borderRadius: "10px",
-    border: "none",
-    background: "#FF9E8A",
-    color: "white",
-    cursor: "pointer"
+    border: "1px solid #475569",
+    background: "#334155",
+    color: "#F1F5F9",
+    cursor: "pointer",
+    transition: "all 0.25s ease"
   },
 
-  secondaryButton: {
+  quizButton: {
     padding: "12px 20px",
     borderRadius: "10px",
-    border: "none",
-    background: "#2E2E2E",
-    color: "white",
-    cursor: "pointer"
+    border: "1px solid #475569",
+    background: "#1E293B",
+    color: "#F1F5F9",
+    cursor: "pointer",
+    transition: "all 0.25s ease"
   },
 
-  tertiaryButton: {
+  examButton: {
     padding: "12px 20px",
-      borderRadius: "10px",
-      border: "none",
-      background: "#555",
-      color: "white",
-      cursor: "pointer"
+    borderRadius: "10px",
+    border: "1px solid #475569",
+    background: "#020617",
+    color: "#F1F5F9",
+    cursor: "pointer",
+    transition: "all 0.25s ease"
   },
 
   backButton: {
     display: "inline-block",
     marginBottom: "40px",
     padding: "10px 20px",
-    background: "rgba(255, 255, 255, 0.8)",
-    color: "#2E2E2E",
+    background: "rgba(30,41,59,0.9)",
+    color: "#F1F5F9",
     textDecoration: "none",
     borderRadius: "8px",
     fontWeight: "600",
     fontSize: "14px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    transition: "all 0.3s ease",
+    border: "1px solid #334155",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+    transition: "all 0.25s ease",
     cursor: "pointer"
   }
 

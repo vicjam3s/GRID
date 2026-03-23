@@ -48,14 +48,13 @@ const styles = {
     minHeight: "100vh",
     padding: "80px 60px",
     fontFamily: "system-ui",
-    background:
-      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)"
+    background: "#0F172A"
   },
 
   title: {
     fontSize: "42px",
     marginBottom: "40px",
-    color: "#2E2E2E"
+    color: "#F1F5F9"
   },
 
   grid: {
@@ -65,40 +64,46 @@ const styles = {
     maxWidth: "900px"
   },
 
+  // subject cards
   card: {
     padding: "24px",
     borderRadius: "14px",
-    background: "rgba(255,255,255,0.65)",
+    background: "rgba(30,41,59,0.9)",
     backdropFilter: "blur(10px)",
     textDecoration: "none",
-    color: "#2E2E2E",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-    transition: "all 0.35s ease"
+    color: "#F1F5F9",
+    border: "1px solid #334155",
+    boxShadow: "0 12px 40px rgba(0,0,0,0.6)",
+    transition: "all 0.3s ease"
   },
 
+  // subject codes (ICAO-style look)
   code: {
     fontSize: "12px",
     fontWeight: "700",
-    color: "#FF9E8A",
-    marginBottom: "8px"
+    color: "#94A3B8",
+    marginBottom: "8px",
+    letterSpacing: "1px"
   },
 
   name: {
-    fontSize: "18px"
+    fontSize: "18px",
+    fontWeight: "500"
   },
 
   backButton: {
     display: "inline-block",
     marginBottom: "30px",
     padding: "10px 20px",
-    background: "rgba(255, 255, 255, 0.8)",
-    color: "#2E2E2E",
+    background: "rgba(30,41,59,0.9)",
+    color: "#F1F5F9",
     textDecoration: "none",
     borderRadius: "8px",
     fontWeight: "600",
     fontSize: "14px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    transition: "all 0.3s ease",
+    border: "1px solid #334155",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+    transition: "all 0.25s ease",
     cursor: "pointer"
   }
 

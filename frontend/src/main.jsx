@@ -45,6 +45,14 @@ style.innerHTML = `
   background: rgba(255, 255, 255, 1) !important;
 }
 
+.topicItem:hover {
+  background: #1E293B;
+}
+
+button:hover {
+  background: #475569 !important;
+}
+
 `;
 
 document.head.appendChild(style);

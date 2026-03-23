@@ -354,3 +354,13 @@ Runways
 Frequencies
 Airspaces
 Waypoints
+
+
+
+
+Frontend Usage for PDF loading...
+Option 1 — Open PDF directly
+window.open(file_url)
+
+Option 2 — Embed into a tile or card..
+<iframe src="PDF_URL" width="100%" height="600px"></iframe>

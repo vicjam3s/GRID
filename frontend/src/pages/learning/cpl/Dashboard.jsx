@@ -75,8 +75,7 @@ const styles = {
     minHeight: "100vh",
     padding: "80px 60px",
     fontFamily: "system-ui",
-    background:
-      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)"
+    background: "#0F172A"
   },
 
   header: {
@@ -85,12 +84,12 @@ const styles = {
 
   title: {
     fontSize: "44px",
-    color: "#2E2E2E",
+    color: "#F1F5F9",
     marginBottom: "10px"
   },
 
   subtitle: {
-    color: "#555"
+    color: "#94A3B8"
   },
 
   subjectGrid: {
@@ -100,25 +99,28 @@ const styles = {
     maxWidth: "1000px"
   },
 
+  // subject cards = training modules
   subjectCard: {
     padding: "26px",
     borderRadius: "16px",
     textDecoration: "none",
-    background: "rgba(255,255,255,0.65)",
+    background: "rgba(30,41,59,0.9)",
     backdropFilter: "blur(10px)",
-    color: "#2E2E2E",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-    transition: "all 0.35s ease",
+    color: "#F1F5F9",
+    border: "1px solid #334155",
+    boxShadow: "0 12px 40px rgba(0,0,0,0.6)",
+    transition: "all 0.3s ease",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     height: "120px"
   },
 
+  // ICAO-like subject codes (clean, neutral)
   subjectCode: {
     fontSize: "12px",
     fontWeight: "700",
-    color: "#FF9E8A",
+    color: "#94A3B8",
     letterSpacing: "1px"
   },
 
@@ -131,14 +133,15 @@ const styles = {
     display: "inline-block",
     marginBottom: "40px",
     padding: "10px 20px",
-    background: "rgba(255, 255, 255, 0.8)",
-    color: "#2E2E2E",
+    background: "rgba(30,41,59,0.9)",
+    color: "#F1F5F9",
     textDecoration: "none",
     borderRadius: "8px",
     fontWeight: "600",
     fontSize: "14px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    transition: "all 0.3s ease",
+    border: "1px solid #334155",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+    transition: "all 0.25s ease",
     cursor: "pointer"
   }
 

@@ -58,27 +58,30 @@ const styles = {
     minHeight: "100vh",
     padding: "80px 60px",
     fontFamily: "system-ui",
-    background:
-      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)"
+    background: "#0F172A"
   },
 
   title: {
     fontSize: "42px",
-    marginBottom: "30px"
+    marginBottom: "30px",
+    color: "#F1F5F9"
   },
 
+  // dark command-style search bar
   search: {
     padding: "14px 18px",
     width: "100%",
     maxWidth: "500px",
     fontSize: "16px",
     borderRadius: "10px",
-    border: "2px solid #FF9E8A",
-    background: "rgba(255,255,255,0.9)",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    border: "1px solid #334155",
+    background: "#020617",
+    color: "#F1F5F9",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
     marginBottom: "40px",
     fontFamily: "system-ui",
-    transition: "all 0.3s ease"
+    outline: "none",
+    transition: "all 0.25s ease"
   },
 
   grid: {
@@ -88,22 +91,26 @@ const styles = {
     maxWidth: "1000px"
   },
 
+  // aerodrome cards (database entries)
   card: {
     padding: "24px",
     borderRadius: "14px",
-    background: "rgba(255,255,255,0.65)",
+    background: "rgba(30,41,59,0.9)",
     backdropFilter: "blur(10px)",
     textDecoration: "none",
-    color: "#2E2E2E",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-    transition: "all 0.35s ease"
+    color: "#F1F5F9",
+    border: "1px solid #334155",
+    boxShadow: "0 12px 40px rgba(0,0,0,0.6)",
+    transition: "all 0.3s ease"
   },
 
+  // ICAO codes styled like identifiers
   icao: {
     fontSize: "12px",
     fontWeight: "700",
-    color: "#FF9E8A",
-    marginBottom: "6px"
+    color: "#94A3B8",
+    marginBottom: "6px",
+    letterSpacing: "1px"
   },
 
   name: {
@@ -113,21 +120,22 @@ const styles = {
 
   city: {
     fontSize: "14px",
-    color: "#555"
+    color: "#CBD5F5"
   },
 
   backButton: {
     display: "inline-block",
     marginBottom: "40px",
     padding: "10px 20px",
-    background: "rgba(255, 255, 255, 0.8)",
-    color: "#2E2E2E",
+    background: "rgba(30,41,59,0.9)",
+    color: "#F1F5F9",
     textDecoration: "none",
     borderRadius: "8px",
     fontWeight: "600",
     fontSize: "14px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    transition: "all 0.3s ease",
+    border: "1px solid #334155",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+    transition: "all 0.25s ease",
     cursor: "pointer"
   }
 

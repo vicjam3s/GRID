@@ -85,8 +85,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "system-ui",
-    background:
-      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)"
+    background: "#0F172A"
   },
 
   container: {
@@ -102,12 +101,12 @@ const styles = {
 
   title: {
     fontSize: "50px",
-    color: "#2E2E2E",
+    color: "#F1F5F9",
     marginBottom: "10px"
   },
 
   subtitle: {
-    color: "#555",
+    color: "#94A3B8",
     fontSize: "18px"
   },
 
@@ -117,38 +116,43 @@ const styles = {
     gap: "40px"
   },
 
+  // training program cards
   programCard: {
     padding: "40px",
     borderRadius: "18px",
-    background: "rgba(255,255,255,0.7)",
+    background: "rgba(30,41,59,0.9)",
     backdropFilter: "blur(12px)",
     textDecoration: "none",
-    color: "#2E2E2E",
-    boxShadow: "0 14px 35px rgba(0,0,0,0.1)",
-    transition: "all 0.35s ease",
+    color: "#F1F5F9",
+    border: "1px solid #334155",
+    boxShadow: "0 14px 40px rgba(0,0,0,0.6)",
+    transition: "all 0.3s ease",
     display: "flex",
     flexDirection: "column",
     gap: "16px"
   },
 
+  // badges
   badge: {
-    background: "#FF9E8A",
-    color: "white",
+    background: "#334155",
+    color: "#F1F5F9",
     fontWeight: "700",
     width: "fit-content",
     padding: "6px 12px",
     borderRadius: "6px",
-    fontSize: "12px"
+    fontSize: "12px",
+    border: "1px solid #475569"
   },
 
   badgeDark: {
-    background: "#2E2E2E",
-    color: "white",
+    background: "#020617",
+    color: "#F1F5F9",
     fontWeight: "700",
     width: "fit-content",
     padding: "6px 12px",
     borderRadius: "6px",
-    fontSize: "12px"
+    fontSize: "12px",
+    border: "1px solid #334155"
   },
 
   programTitle: {
@@ -157,32 +161,37 @@ const styles = {
 
   programText: {
     fontSize: "15px",
-    color: "#555",
+    color: "#CBD5F5",
     lineHeight: "1.6"
   },
 
+  // action button (neutral system)
   cardAction: {
     marginTop: "12px",
     padding: "10px 18px",
     borderRadius: "8px",
-    background: "#FF9E8A",
-    color: "white",
+    background: "#334155",
+    border: "1px solid #475569",
+    color: "#F1F5F9",
     fontWeight: "600",
     width: "fit-content",
-    transition: "all 0.25s ease"  },
+    transition: "all 0.25s ease"
+  },
 
   backButton: {
     display: "inline-block",
     marginBottom: "30px",
     padding: "10px 20px",
-    background: "rgba(255, 255, 255, 0.8)",
-    color: "#2E2E2E",
+    background: "rgba(30,41,59,0.9)",
+    color: "#F1F5F9",
     textDecoration: "none",
     borderRadius: "8px",
     fontWeight: "600",
     fontSize: "14px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    transition: "all 0.3s ease",
-    cursor: "pointer"  },
+    border: "1px solid #334155",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+    transition: "all 0.25s ease",
+    cursor: "pointer"
+  },
 
 };

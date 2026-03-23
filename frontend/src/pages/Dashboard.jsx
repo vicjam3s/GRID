@@ -152,8 +152,7 @@ const styles = {
     flexDirection: "column",
     fontFamily: "system-ui",
     paddingBottom: "80px",
-    background:
-      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)",
+    background: "#0F172A",
   },
 
   header: {
@@ -167,13 +166,13 @@ const styles = {
   title: {
     fontSize: "80px",
     fontWeight: "700",
-    color: "#2E2E2E",
+    color: "#F1F5F9",
     marginBottom: "10px",
     letterSpacing: "3px"
   },
 
   subtitle: {
-    color: "#555",
+    color: "#94A3B8",
     fontSize: "18px"
   },
 
@@ -192,25 +191,25 @@ const styles = {
     padding: "30px",
   },
 
+  // cleaner solid panels (no gradient noise)
   learning: {
-    background:
-      "linear-gradient(135deg,#FF9E8A 40%, #ffb7a5ef 100%)"
+    background: "#1E293B"
   },
 
   flight: {
-    background:
-      "linear-gradient(135deg,#2E2E2E 0%, #3a3a3ae9 100%)"
+    background: "#020617"
   },
 
   glassCard: {
     maxWidth: "420px",
     padding: "25px",
     borderRadius: "16px",
-    background: "rgba(255,255,255,0.25)",
+    background: "rgba(30,41,59,0.85)",
     backdropFilter: "blur(12px)",
     WebkitBackdropFilter: "blur(12px)",
-    boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
-    color: "white",
+    boxShadow: "0 12px 45px rgba(0,0,0,0.5)",
+    color: "#F1F5F9",
+    border: "1px solid #334155",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -226,28 +225,30 @@ const styles = {
   panelText: {
     fontSize: "15px",
     lineHeight: "1.5",
-    marginBottom: "15px"
+    marginBottom: "15px",
+    color: "#CBD5F5"
   },
 
+  // unified grey buttons
   button: {
     padding: "12px 26px",
     borderRadius: "10px",
-    border: "none",
-    background: "white",
-    color: "#FF8A73",
+    border: "1px solid #475569",
+    background: "#334155",
+    color: "#F1F5F9",
     fontWeight: "600",
     cursor: "pointer",
-    transition: "all 0.3s ease"
+    transition: "all 0.25s ease"
   },
 
   buttonDark: {
     padding: "12px 26px",
     borderRadius: "10px",
-    border: "none",
-    background: "#FF9E8A",
-    color: "white",
+    border: "1px solid #475569",
+    background: "#1E293B",
+    color: "#F1F5F9",
     fontWeight: "600",
-    transition: "all 0.3s ease",
+    transition: "all 0.25s ease",
     cursor: "pointer"
   },
 
@@ -261,11 +262,12 @@ const styles = {
     overflow: "hidden"
   },
 
+  // softer, more realistic radar lines
   route: {
     position: "absolute",
     width: "120%",
     height: "2px",
-    background: "rgba(255,255,255,0.3)",
+    background: "rgba(255,255,255,0.04)",
     top: "40%",
     left: "-10%",
     transform: "rotate(12deg)",
@@ -276,98 +278,70 @@ const styles = {
     position: "absolute",
     width: "120%",
     height: "2px",
-    background: "rgba(255,255,255,0.2)",
+    background: "rgba(255,255,255,0.02)",
     top: "65%",
     left: "-10%",
     transform: "rotate(-8deg)",
     animation: "moveRoute 18s linear infinite"
   },
 
-featuresSection: {
-  padding: "100px 80px",
-  textAlign: "center"
-},
+  featuresSection: {
+    padding: "100px 80px",
+    textAlign: "center"
+  },
 
-featuresTitle: {
-  fontSize: "42px",
-  marginBottom: "60px",
-  color: "#2E2E2E",
-  fontWeight: "600"
-},
+  featuresTitle: {
+    fontSize: "42px",
+    marginBottom: "60px",
+    color: "#F1F5F9",
+    fontWeight: "600"
+  },
 
-featuresGrid: {
-  display: "grid",
-  gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "30px",
-  justifyItems: "stretch"
-},
+  featuresGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "30px",
+    justifyItems: "stretch"
+  },
 
-featureCard: {
-  height: "220px",
-  borderRadius: "16px",
-  overflow: "hidden",
-  position: "relative",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  cursor: "pointer",
-  transition: "transform 0.35s ease, box-shadow 0.35s ease",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.15)"
-},
+  featureCard: {
+    height: "220px",
+    borderRadius: "16px",
+    overflow: "hidden",
+    position: "relative",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    cursor: "pointer",
+    transition: "transform 0.35s ease, box-shadow 0.35s ease",
+    boxShadow: "0 14px 40px rgba(0,0,0,0.5)"
+  },
 
-featuresContainer: {
-  maxWidth: "1200px",
-  margin: "0 auto"
-},
+  featuresContainer: {
+    maxWidth: "1200px",
+    margin: "0 auto"
+  },
 
-cardOverlay: {
-  position: "absolute",
-  inset: 0,
-  padding: "28px",
-  background: "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.7))",
-  color: "white",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-end"
-},
+  // more subtle overlay (less contrast, more realism)
+  cardOverlay: {
+    position: "absolute",
+    inset: 0,
+    padding: "28px",
+    background: "linear-gradient(rgba(15,23,42,0.55), rgba(15,23,42,0.95))",
+    color: "white",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end"
+  },
 
-featureTitle: {
-  fontSize: "20px",
-  marginBottom: "8px"
-},
+  featureTitle: {
+    fontSize: "20px",
+    marginBottom: "8px"
+  },
 
-featureText: {
-  fontSize: "14px",
-  lineHeight: "1.4"
-},
-
-cardLearning: {
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d')"
-},
-
-cardExams: {
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b')"
-},
-
-cardPlanning: {
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1529070538774-1843cb3265df')"
-},
-
-cardAerodrome: {
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1508444845599-5c89863b1c44')"
-},
-
-cardTracking: {
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1474302770737-173ee21bab63')"
-},
-
-cardNavigation: {
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')"
-},
+  featureText: {
+    fontSize: "14px",
+    lineHeight: "1.4",
+    color: "#E2E8F0"
+  },
 
 };

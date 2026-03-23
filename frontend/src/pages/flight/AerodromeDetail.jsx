@@ -84,8 +84,7 @@ const styles = {
     minHeight: "100vh",
     padding: "60px",
     fontFamily: "system-ui",
-    background:
-      "linear-gradient(135deg,#FFE4DE 0%, #FFD1C7 40%, #F4F4F4 100%)"
+    background: "#0F172A"
   },
 
   header: {
@@ -94,25 +93,26 @@ const styles = {
 
   title: {
     fontSize: "40px",
-    color: "#2E2E2E"
+    color: "#F1F5F9"
   },
 
   subtitle: {
-    color: "#555"
+    color: "#94A3B8"
   },
 
   backButton: {
     display: "inline-block",
     marginBottom: "40px",
     padding: "10px 20px",
-    background: "rgba(255, 255, 255, 0.8)",
-    color: "#2E2E2E",
+    background: "rgba(30,41,59,0.9)",
+    color: "#F1F5F9",
     textDecoration: "none",
     borderRadius: "8px",
     fontWeight: "600",
     fontSize: "14px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    transition: "all 0.3s ease",
+    border: "1px solid #334155",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+    transition: "all 0.25s ease",
     cursor: "pointer"
   },
 
@@ -122,40 +122,54 @@ const styles = {
     gap: "30px"
   },
 
+  // left panel (aerodrome data)
   sidebar: {
     padding: "25px",
     borderRadius: "14px",
-    background: "rgba(255,255,255,0.7)",
+    background: "rgba(30,41,59,0.9)",
     backdropFilter: "blur(10px)",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)"
+    border: "1px solid #334155",
+    boxShadow: "0 12px 40px rgba(0,0,0,0.6)"
   },
 
+  // right panel (operational info)
   content: {
     padding: "25px",
     borderRadius: "14px",
-    background: "rgba(255,255,255,0.7)",
+    background: "rgba(30,41,59,0.9)",
     backdropFilter: "blur(10px)",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)"
+    border: "1px solid #334155",
+    boxShadow: "0 12px 40px rgba(0,0,0,0.6)"
   },
 
   sectionTitle: {
     marginBottom: "20px",
-    fontSize: "20px"
+    fontSize: "20px",
+    color: "#F1F5F9"
   },
 
+  // structured info rows (like checklist data)
   infoItem: {
     display: "flex",
     justifyContent: "space-between",
-    marginBottom: "10px"
+    marginBottom: "12px",
+    paddingBottom: "6px",
+    borderBottom: "1px solid #1E293B",
+    color: "#CBD5F5",
+    fontSize: "14px"
   },
 
+  // frequency cards look like selectable data blocks
   frequencyCard: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "10px",
+    padding: "12px",
     borderRadius: "8px",
-    background: "rgba(255,255,255,0.5)",
-    marginBottom: "8px"
+    background: "#020617",
+    border: "1px solid #334155",
+    marginBottom: "10px",
+    color: "#F1F5F9",
+    transition: "all 0.25s ease"
   }
 
 };
