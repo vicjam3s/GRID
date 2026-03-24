@@ -8,6 +8,10 @@ export default function Dashboard() {
       <div style={styles.routes}>
         <div style={styles.route}></div>
         <div style={styles.route2}></div>
+        <div style={styles.route3}></div>
+        <div style={styles.route4}></div>
+        <div style={styles.route5}></div>
+        <div style={styles.route6}></div>
       </div>
 
       <div style={styles.header}>
@@ -153,6 +157,7 @@ const styles = {
     fontFamily: "system-ui",
     paddingBottom: "80px",
     background: "#0F172A",
+    position: "relative"
   },
 
   header: {
@@ -193,15 +198,13 @@ const styles = {
 
   // cleaner solid panels (no gradient noise)
   learning: {
-    background: "#1E293B"
   },
 
   flight: {
-    background: "#020617"
   },
 
   glassCard: {
-    maxWidth: "420px",
+    maxWidth: "520px",
     padding: "25px",
     borderRadius: "16px",
     background: "rgba(30,41,59,0.85)",
@@ -214,7 +217,9 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-between",
     flex: 1,
-    transition: "all 0.35s ease"
+    transition: "all 0.35s ease",
+    position: "relative",
+    zIndex: 2
   },
 
   panelTitle: {
@@ -267,7 +272,7 @@ const styles = {
     position: "absolute",
     width: "120%",
     height: "2px",
-    background: "rgba(255,255,255,0.04)",
+    background: "rgba(255,255,255,0.08)",
     top: "40%",
     left: "-10%",
     transform: "rotate(12deg)",
@@ -278,16 +283,62 @@ const styles = {
     position: "absolute",
     width: "120%",
     height: "2px",
-    background: "rgba(255,255,255,0.02)",
+    background: "rgba(255,255,255,0.05)",
     top: "65%",
     left: "-10%",
     transform: "rotate(-8deg)",
     animation: "moveRoute 18s linear infinite"
   },
 
+  route3: {
+    position: "absolute",
+    width: "120%",
+    height: "2px",
+    background: "rgba(255,255,255,0.06)",
+    top: "25%",
+    left: "-10%",
+    transform: "rotate(15deg)",
+    animation: "moveRoute 15s linear infinite"
+  },
+
+  route4: {
+    position: "absolute",
+    width: "120%",
+    height: "2px",
+    background: "rgba(255,255,255,0.04)",
+    top: "80%",
+    left: "-10%",
+    transform: "rotate(-12deg)",
+    animation: "moveRoute 20s linear infinite"
+  },
+
+  route5: {
+    position: "absolute",
+    width: "120%",
+    height: "2px",
+    background: "rgba(255,255,255,0.07)",
+    top: "50%",
+    left: "-10%",
+    transform: "rotate(8deg)",
+    animation: "moveRoute 16s linear infinite"
+  },
+
+  route6: {
+    position: "absolute",
+    width: "120%",
+    height: "2px",
+    background: "rgba(255,255,255,0.05)",
+    top: "35%",
+    left: "-10%",
+    transform: "rotate(-15deg)",
+    animation: "moveRoute 22s linear infinite"
+  },
+
   featuresSection: {
     padding: "100px 80px",
-    textAlign: "center"
+    textAlign: "center",
+    position: "relative",
+    zIndex: 2
   },
 
   featuresTitle: {
@@ -301,7 +352,9 @@ const styles = {
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
     gap: "30px",
-    justifyItems: "stretch"
+    justifyItems: "stretch",
+    position: "relative",
+    zIndex: 2
   },
 
   featureCard: {
@@ -309,6 +362,7 @@ const styles = {
     borderRadius: "16px",
     overflow: "hidden",
     position: "relative",
+    zIndex: 2,
     backgroundSize: "cover",
     backgroundPosition: "center",
     cursor: "pointer",
@@ -318,7 +372,9 @@ const styles = {
 
   featuresContainer: {
     maxWidth: "1200px",
-    margin: "0 auto"
+    margin: "0 auto",
+    position: "relative",
+    zIndex: 1
   },
 
   // more subtle overlay (less contrast, more realism)
@@ -330,7 +386,8 @@ const styles = {
     color: "white",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    zIndex: 2
   },
 
   featureTitle: {

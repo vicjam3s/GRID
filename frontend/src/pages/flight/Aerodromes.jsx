@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BackgroundLines from "../../components/BackgroundLines";
 
 const aerodromes = [
 
@@ -13,6 +14,7 @@ const aerodromes = [
 export default function Aerodromes() {
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <Link to="/flight" style={styles.backButton} className="back-button">
         ← Back to Flight Planning

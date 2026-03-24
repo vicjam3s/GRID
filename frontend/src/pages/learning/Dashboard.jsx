@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import BackgroundLines from "../../components/BackgroundLines";
 
 export default function LearningDashboard() {
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <div style={styles.container}>
 
@@ -85,13 +87,16 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "system-ui",
-    background: "#0F172A"
+    background: "#0F172A",
+    position: "relative"
   },
 
   container: {
     width: "100%",
     maxWidth: "1000px",
-    padding: "40px"
+    padding: "40px",
+    position: "relative",
+    zIndex: 2
   },
 
   header: {

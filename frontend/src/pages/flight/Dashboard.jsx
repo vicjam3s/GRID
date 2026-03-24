@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import BackgroundLines from "../../components/BackgroundLines";
 
 export default function FlightDashboard() {
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <Link to="/" style={styles.backButton} className="back-button">
         ← Back to Main
@@ -99,7 +101,9 @@ const styles = {
     minHeight: "100vh",
     padding: "80px 60px",
     fontFamily: "system-ui",
-    background: "#0F172A"
+    background: "#0F172A",
+    position: "relative",
+    zIndex: 2
   },
 
   header: {

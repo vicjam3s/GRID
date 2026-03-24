@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import BackgroundLines from "../../../components/BackgroundLines";
+
 export default function QuestionBank() {
 
   const [questions, setQuestions] = useState([]);
@@ -52,6 +54,7 @@ export default function QuestionBank() {
 
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <h1 style={styles.title}>Question Bank</h1>
 

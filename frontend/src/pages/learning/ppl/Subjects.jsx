@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BackgroundLines from "../../../components/BackgroundLines";
 
 const subjects = [
   { code: "AL", name: "Air Law" },
@@ -15,6 +16,7 @@ const subjects = [
 export default function PPLSubjects() {
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <Link to="/learning/ppl" style={styles.backButton} className="back-button">
         ← Back to Dashboard

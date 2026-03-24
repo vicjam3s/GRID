@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BackgroundLines from "../../../components/BackgroundLines";
 
 const subjects = [
 
@@ -23,6 +24,7 @@ const subjects = [
 export default function CPLDashboard() {
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <Link to="/learning" style={styles.backButton} className="back-button">
         ← Back to E-Learning
@@ -75,11 +77,14 @@ const styles = {
     minHeight: "100vh",
     padding: "80px 60px",
     fontFamily: "system-ui",
-    background: "#0F172A"
+    background: "#0F172A",
+    position: "relative"
   },
 
   header: {
-    marginBottom: "50px"
+    marginBottom: "50px",
+    position: "relative",
+    zIndex: 2
   },
 
   title: {

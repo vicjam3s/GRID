@@ -1,3 +1,5 @@
+import BackgroundLines from "../../../components/BackgroundLines";
+
 export default function QuestionBank() {
 
   const question = {
@@ -13,6 +15,7 @@ export default function QuestionBank() {
   return (
 
     <div style={styles.page}>
+      <BackgroundLines />
 
       <h1 style={styles.title}>Practice Questions</h1>
 

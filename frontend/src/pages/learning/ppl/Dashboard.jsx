@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BackgroundLines from "../../../components/BackgroundLines";
 
 const subjects = [
 
@@ -19,6 +20,7 @@ const subjects = [
 export default function PPLDashboard() {
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <Link to="/learning" style={styles.backButton} className="back-button">
         ← Back to E-Learning

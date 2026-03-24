@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import BackgroundLines from "../../../components/BackgroundLines";
 
 export default function PPLSubjectDetail() {
 
@@ -13,8 +14,7 @@ export default function PPLSubjectDetail() {
   ];
 
   return (
-      <div style={styles.page}>
-
+      <div style={styles.page}>      <BackgroundLines />
         <Link to="/learning/ppl/subjects" style={styles.backButton} className="back-button">
           ← Back to Subjects
         </Link>
@@ -34,7 +34,7 @@ export default function PPLSubjectDetail() {
       </p>
 
       <button style={styles.primaryButton}>
-        Start Exam
+        Start Trial
       </button>
     </div>
 
@@ -48,7 +48,7 @@ export default function PPLSubjectDetail() {
 
       <Link to="/learning/questions/NAV">
         <button style={styles.primaryButton}>
-          Practice Questions
+          Data banks
         </button>
       </Link>
     </div>

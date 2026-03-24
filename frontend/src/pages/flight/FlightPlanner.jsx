@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import MapView from "../../components/flight/MapView";
+import BackgroundLines from "../../components/BackgroundLines";
 
 export default function FlightPlanner() {
 
@@ -9,6 +10,7 @@ export default function FlightPlanner() {
 
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <Link to="/flight" style={styles.backButton} className="back-button">
         ← Back to Flight Planning

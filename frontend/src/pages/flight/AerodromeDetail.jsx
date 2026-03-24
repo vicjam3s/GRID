@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import BackgroundLines from "../../components/BackgroundLines";
 
 export default function AerodromeDetail() {
 
@@ -6,6 +7,7 @@ export default function AerodromeDetail() {
 
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <Link to="/flight/aerodromes" style={styles.backButton} className="back-button">
         ← Back to Aerodromes

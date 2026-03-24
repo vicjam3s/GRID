@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import BackgroundLines from "../../../components/BackgroundLines";
 
 export default function CPLSubjectDetail() {
 
@@ -15,6 +16,7 @@ export default function CPLSubjectDetail() {
 
   return (
     <div style={styles.page}>
+      <BackgroundLines />
 
       <Link to="/learning/cpl/subjects" style={styles.backButton} className="back-button">
         ← Back to Subjects
@@ -37,7 +39,7 @@ export default function CPLSubjectDetail() {
       </p>
 
       <button style={styles.primaryButton} className="primary-button">
-        Start Exam
+        Start Trial
       </button>
     </div>
 
@@ -50,7 +52,7 @@ export default function CPLSubjectDetail() {
       </p>
 
       <button style={styles.primaryButton} className="primary-button">
-        Practice Questions
+        Data Banks
       </button>
     </div>
 
