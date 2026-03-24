@@ -13,64 +13,58 @@ export default function PPLSubjectDetail() {
   ];
 
   return (
-    <div style={styles.page}>
+      <div style={styles.page}>
 
-      <Link to="/learning/ppl/subjects" style={styles.backButton} className="back-button">
-        ← Back to Subjects
-      </Link>
+        <Link to="/learning/ppl/subjects" style={styles.backButton} className="back-button">
+          ← Back to Subjects
+        </Link>
 
-      <div style={styles.header}>
-        <h1 style={styles.title}>{id} — PPL Subject</h1>
-      </div>
-
-      <div style={styles.layout}>
-
-        {/* Sidebar */}
-
-        <div style={styles.sidebar}>
-
-          <h3 style={styles.sidebarTitle}>Topics</h3>
-
-          {topics.map((topic, index) => (
-            <div key={index} style={styles.topicItem}>
-              {topic}
-            </div>
-          ))}
-
+        <div style={styles.header}>
+          <h1 style={styles.title}>{id} — PPL Subject</h1>
         </div>
 
-        {/* Content Area */}
+        <div style={styles.grid}>
 
-        <div style={styles.content}>
+    {/* MOCK EXAMS */}
+    <div style={styles.card}>
+      <h2 style={styles.cardTitle}>Mock Exams</h2>
+      <p style={styles.cardText}>
+        Simulate real aviation exam conditions with timed tests
+        and full subject coverage.
+      </p>
 
-          <h2 style={styles.contentTitle}>
-            Select a topic to begin studying
-          </h2>
+      <button style={styles.primaryButton}>
+        Start Exam
+      </button>
+    </div>
 
-          <p style={styles.contentText}>
-            Study notes, explanations and practice questions for this
-            subject will appear here.
-          </p>
+    {/* QUESTION BANK */}
+    <div style={styles.card}>
+      <h2 style={styles.cardTitle}>Question Bank</h2>
+      <p style={styles.cardText}>
+        Practice questions by topic and improve your understanding
+        with instant feedback.
+      </p>
 
-          <div style={styles.actions}>
+      <button style={styles.primaryButton}>
+        Practice Questions
+      </button>
+    </div>
 
-            <button style={styles.primaryButton}>
-              Practice Questions
-            </button>
+    {/* NOTES */}
+    <div style={styles.card}>
+      <h2 style={styles.cardTitle}>Notes</h2>
+      <p style={styles.cardText}>
+        Access structured notes and reference material for
+        quick revision.
+      </p>
 
-            <button style={styles.secondaryButton}>
-              Mock Exam
-            </button>
+      <button style={styles.secondaryButton}>
+        View Notes
+      </button>
+    </div>
 
-            <button style={styles.tertiaryButton}>
-              Review Incorrect Questions
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
+    </div>
 
     </div>
   );
@@ -80,109 +74,70 @@ const styles = {
 
   page: {
     minHeight: "100vh",
-    padding: "60px",
+    padding: "80px 60px",
     fontFamily: "system-ui",
     background: "#0F172A"
   },
 
-  header: {
+  title: {
+    fontSize: "36px",
+    color: "#F1F5F9",
     marginBottom: "40px"
   },
 
-  title: {
-    fontSize: "36px",
-    color: "#F1F5F9"
-  },
-
-  layout: {
+  // 3-tile layout
+  grid: {
     display: "grid",
-    gridTemplateColumns: "260px 1fr",
-    gap: "30px"
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "30px",
+    maxWidth: "1000px"
   },
 
-  // topics sidebar (like syllabus panel)
-  sidebar: {
-    background: "rgba(30,41,59,0.9)",
-    backdropFilter: "blur(10px)",
-    borderRadius: "14px",
-    padding: "20px",
-    border: "1px solid #334155",
-    boxShadow: "0 12px 40px rgba(0,0,0,0.6)"
-  },
-
-  sidebarTitle: {
-    marginBottom: "20px",
-    fontSize: "18px",
-    color: "#F1F5F9"
-  },
-
-  // topic items (interactive list)
-  topicItem: {
-    padding: "10px",
-    borderRadius: "8px",
-    marginBottom: "8px",
-    cursor: "pointer",
-    background: "#020617",
-    border: "1px solid #1E293B",
-    color: "#CBD5F5",
-    transition: "all 0.25s ease"
-  },
-
-  // main content panel
-  content: {
-    background: "rgba(30,41,59,0.9)",
-    backdropFilter: "blur(10px)",
-    borderRadius: "14px",
+  // main tiles
+  card: {
     padding: "30px",
+    borderRadius: "16px",
+    background: "rgba(30,41,59,0.9)",
     border: "1px solid #334155",
-    boxShadow: "0 12px 40px rgba(0,0,0,0.6)"
+    boxShadow: "0 12px 40px rgba(0,0,0,0.6)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    gap: "16px",
+    transition: "all 0.3s ease"
   },
 
-  contentTitle: {
-    fontSize: "24px",
-    marginBottom: "12px",
+  cardTitle: {
+    fontSize: "22px",
     color: "#F1F5F9"
   },
 
-  contentText: {
+  cardText: {
+    fontSize: "14px",
     color: "#CBD5F5",
-    marginBottom: "30px"
+    lineHeight: "1.5"
   },
 
-  actions: {
-    display: "flex",
-    gap: "15px"
-  },
-
-  // unified action buttons
-  notesButton: {
-    padding: "12px 20px",
-    borderRadius: "10px",
+  primaryButton: {
+    marginTop: "10px",
+    padding: "10px 16px",
+    borderRadius: "8px",
     border: "1px solid #475569",
     background: "#334155",
     color: "#F1F5F9",
-    cursor: "pointer",
-    transition: "all 0.25s ease"
+    fontWeight: "600",
+    cursor: "pointer"
   },
 
-  quizButton: {
-    padding: "12px 20px",
-    borderRadius: "10px",
+  secondaryButton: {
+    marginTop: "10px",
+    padding: "10px 16px",
+    borderRadius: "8px",
     border: "1px solid #475569",
     background: "#1E293B",
     color: "#F1F5F9",
-    cursor: "pointer",
-    transition: "all 0.25s ease"
-  },
-
-  examButton: {
-    padding: "12px 20px",
-    borderRadius: "10px",
-    border: "1px solid #475569",
-    background: "#020617",
-    color: "#F1F5F9",
-    cursor: "pointer",
-    transition: "all 0.25s ease"
+    fontWeight: "600",
+    cursor: "pointer"
   },
 
   backButton: {

@@ -28,21 +28,30 @@ style.innerHTML = `
   100% { transform: translateX(100%) rotate(12deg); }
 }
 
-.program-button:hover {
-  background: #ff846d;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
 .subject-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.12);
 }
 
-.back-button:hover {
-  transform: translateX(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  background: rgba(255, 255, 255, 1) !important;
+.back-button,
+.primary-button,
+.secondary-button {
+  transition: all 0.25s ease;
+}
+
+.back-button:hover,
+.primary-button:hover,
+.secondary-button:hover {
+  background: rgba(51, 65, 85, 0.9) !important;
+  border-color: #475569 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
+}
+
+.back-button:active,
+.primary-button:active,
+.secondary-button:active {
+  transform: translateY(0);
 }
 
 .topicItem:hover {
