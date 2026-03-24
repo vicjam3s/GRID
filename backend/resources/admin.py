@@ -1,9 +1,19 @@
 from django.contrib import admin
-from .models import NotePDF
+from .models import Resource
 
 
-@admin.register(NotePDF)
-class NotePDFAdmin(admin.ModelAdmin):
-    list_display = ("title", "subject", "uploaded_at")
-    list_filter = ("subject",)
+@admin.register(Resource)
+class ResourceAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "title",
+        "course",
+        "subject",
+        "resource_type",
+        "uploaded_at",
+        "is_active"
+    )
+
+    list_filter = ("course", "subject", "resource_type")
+
     search_fields = ("title",)

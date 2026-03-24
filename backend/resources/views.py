@@ -1,21 +1,30 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import NotePDF
+from .models import Resource
 
 
-class NotesBySubjectView(APIView):
+class ResourceView(APIView):
 
     def get(self, request):
-        subject = request.GET.get("subject")
 
-        notes = NotePDF.objects.filter(subject=subject)
+        course_code = request.GET.get("course")
+        subject_code = request.GET.get("subject")
+        resource_type = request.GET.get("type")
+
+        resources = Resource.objects.filter(
+            course__code=course_code,
+            subject__code=subject_code,
+            resource_type=resource_type,
+            is_active=True
+        )
 
         data = [
             {
-                "title": note.title,
-                "file": request.build_absolute_uri(note.file.url)
+                "id": r.id,
+                "title": r.title,
+                "file": request.build_absolute_uri(r.file.url)
             }
-            for note in notes
+            for r in resources
         ]
 
         return Response(data)

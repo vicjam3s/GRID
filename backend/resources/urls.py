@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import NotesBySubjectView
+from .views import *
 
 urlpatterns = [
-    path("notes/", NotesBySubjectView.as_view()),
+    path("", ResourceView.as_view()),
 ]

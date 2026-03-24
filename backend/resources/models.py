@@ -1,24 +1,38 @@
 from django.db import models
+from syllabus.models import Course, Subject
 
 
-class NotePDF(models.Model):
+class Resource(models.Model):
 
-    SUBJECT_CHOICES = (
-        ("HP", "Human Performance"),
-        ("NAV", "Navigation"),
-        ("MET", "Meteorology"),
-        ("AL", "Air Law"),
-        ("OPS", "Operational Procedures"),
-        ("RNAV", "Radio Navigation"),
+    RESOURCE_TYPE = (
+        ("NOTES", "Notes"),
+        ("QBANK", "Question Bank"),
     )
 
-    subject = models.CharField(max_length=10, choices=SUBJECT_CHOICES)
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name="resources"
+    )
+
+    subject = models.ForeignKey(
+        Subject,
+        on_delete=models.CASCADE,
+        related_name="resources"
+    )
+
+    resource_type = models.CharField(max_length=10, choices=RESOURCE_TYPE)
 
     title = models.CharField(max_length=255)
 
-    file = models.FileField(upload_to="notes/pdfs/")
+    file = models.FileField(upload_to="resources/pdfs/")
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["course", "subject", "resource_type"]
+
     def __str__(self):
-        return f"{self.subject} - {self.title}"
+        return f"{self.course.code} - {self.subject.code} - {self.resource_type} - {self.title}"
