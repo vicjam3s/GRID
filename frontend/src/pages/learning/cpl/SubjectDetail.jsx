@@ -62,7 +62,7 @@ export default function CPLSubjectDetail() {
         quick revision.
       </p>
 
-      <button style={styles.secondaryButton} className="secondary-button">
+      <button style={styles.primaryButton} className="primary-button">
         View Notes
       </button>
     </div>
@@ -130,7 +130,10 @@ const styles = {
     background: "#334155",
     color: "#F1F5F9",
     fontWeight: "600",
-    cursor: "pointer"
+    cursor: "pointer",
+    width: "100%",
+    display: "block",
+    boxSizing: "border-box"
   },
 
   secondaryButton: {
@@ -141,7 +144,10 @@ const styles = {
     background: "#1E293B",
     color: "#F1F5F9",
     fontWeight: "600",
-    cursor: "pointer"
+    cursor: "pointer",
+    width: "100%",
+    display: "block",
+    boxSizing: "border-box"
   },
 
   backButton: {

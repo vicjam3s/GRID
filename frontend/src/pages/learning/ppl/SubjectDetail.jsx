@@ -46,9 +46,11 @@ export default function PPLSubjectDetail() {
         with instant feedback.
       </p>
 
-      <button style={styles.primaryButton}>
-        Practice Questions
-      </button>
+      <Link to="/learning/questions/NAV">
+        <button style={styles.primaryButton}>
+          Practice Questions
+        </button>
+      </Link>
     </div>
 
     {/* NOTES */}
@@ -59,7 +61,7 @@ export default function PPLSubjectDetail() {
         quick revision.
       </p>
 
-      <button style={styles.secondaryButton}>
+      <button style={styles.primaryButton}>
         View Notes
       </button>
     </div>
@@ -126,7 +128,10 @@ const styles = {
     background: "#334155",
     color: "#F1F5F9",
     fontWeight: "600",
-    cursor: "pointer"
+    cursor: "pointer",
+    width: "100%",
+    display: "block",
+    boxSizing: "border-box"
   },
 
   secondaryButton: {
@@ -137,7 +142,10 @@ const styles = {
     background: "#1E293B",
     color: "#F1F5F9",
     fontWeight: "600",
-    cursor: "pointer"
+    cursor: "pointer",
+    width: "100%",
+    display: "block",
+    boxSizing: "border-box"
   },
 
   backButton: {

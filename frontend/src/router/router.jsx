@@ -23,6 +23,7 @@ import CPLSubjectDetail from "../pages/learning/cpl/SubjectDetail";
 import CPLNotes from "../pages/learning/cpl/Notes";
 import CPLQuiz from "../pages/learning/cpl/Quiz";
 import CPLExam from "../pages/learning/cpl/Exam";
+import QuestionBank from "../pages/learning/cpl/QuestionBank";
 
 /* Flight */
 
@@ -111,6 +112,11 @@ export const router = createBrowserRouter([
     {
       path: "/learning/cpl/exam",
       element: <CPLExam />,
+    },
+
+    {
+      path: "/learning/questions/:subject",
+      element: <QuestionBank />
     },
 
   /* Flight */
