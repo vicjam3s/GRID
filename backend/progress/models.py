@@ -1,52 +1,55 @@
 from django.conf import settings
 from django.db import models
+from syllabus.models import Course, Subject
 from assessments.models import Question
 
-# Create your models here.
 
 class ExamAttempt(models.Model):
-    """
-    Represents one exam sitting by a user.
-    """
-
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name="exam_attempts",
+        related_name="exam_attempts"
     )
 
-    total_questions = models.PositiveIntegerField()
-    score = models.PositiveIntegerField()
-    passed = models.BooleanField()
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name="exam_attempts",
+        null=True,
+        blank=True
+    )
+
+    subject = models.ForeignKey(
+        Subject,
+        on_delete=models.CASCADE,
+        related_name="exam_attempts"
+    )
+
+    score = models.IntegerField()
+    total_questions = models.IntegerField()
+
+    percentage = models.FloatField(default=0)
+    passed = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"ExamAttempt #{self.id} - {self.user.email}"
+        return f"{self.user} - {self.subject.code} ({self.score}/{self.total_questions})"
 
 
-class QuestionAttempt(models.Model):
-    """
-    Represents a user's answer to a single question in an exam.
-    """
-
-    exam = models.ForeignKey(
+class FailedQuestion(models.Model):
+    attempt = models.ForeignKey(
         ExamAttempt,
         on_delete=models.CASCADE,
-        related_name="question_attempts",
+        related_name="failed_questions"
     )
 
     question = models.ForeignKey(
         Question,
-        on_delete=models.CASCADE,
+        on_delete=models.CASCADE
     )
 
-    selected_option = models.CharField(
-        max_length=1,
-        choices=(("A", "A"), ("B", "B"), ("C", "C"), ("D", "D")),
-    )
-
-    is_correct = models.BooleanField()
+    selected_option = models.CharField(max_length=1)
 
     def __str__(self):
-        return f"Q{self.question.id} → {self.selected_option}"
+        return f"Failed: {self.question.id}"

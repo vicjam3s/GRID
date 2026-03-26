@@ -364,3 +364,15 @@ window.open(file_url)
 
 Option 2 — Embed into a tile or card..
 <iframe src="PDF_URL" width="100%" height="600px"></iframe>
+
+
+POST /api/progress/submit/
+
+{
+  "course_id": 1,
+  "subject_id": 3,
+  "answers": [
+    {"question_id": 10, "selected_option": "A"},
+    {"question_id": 11, "selected_option": "C"}
+  ]
+}

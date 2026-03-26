@@ -2,6 +2,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path("upload/", ContentUploadView.as_view(), name="content_upload"),
-    path("notes/<int:subtopic_id>/", SubtopicNotesView.as_view(), name="subtopic_notes"),
+    path("upload/", ContentUploadView.as_view()),
+    path("notes/", TopicNotesView.as_view()),
 ]

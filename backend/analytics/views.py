@@ -4,10 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from progress.models import QuestionAttempt
+from progress.models import ExamAttempt
 
-
-# Create your view here.
 
 # Subject level analytics
 class SubjectAnalyticsView(APIView):
@@ -15,141 +13,116 @@ class SubjectAnalyticsView(APIView):
 
     def get(self, request):
         attempts = (
-            QuestionAttempt.objects
-            .filter(exam__user=request.user)
-            .select_related(
-                "question__subtopic__topic__subject"
-            )
+            ExamAttempt.objects
+            .filter(user=request.user)
+            .select_related("subject", "course")
         )
 
         stats = defaultdict(lambda: {
             "subject_id": None,
             "subject_name": None,
-            "total_questions": 0,
-            "correct_answers": 0,
-            "accuracy_percent": 0,
+            "total_attempts": 0,
+            "average_score": 0,
+            "average_percentage": 0,
         })
 
         for attempt in attempts:
-            subject = attempt.question.subtopic.topic.subject
-            subject_id = subject.id
+            subject = attempt.subject
+            sid = subject.id
 
-            stats[subject_id]["subject_id"] = subject.id
-            stats[subject_id]["subject_name"] = subject.name
-            stats[subject_id]["total_questions"] += 1
+            stats[sid]["subject_id"] = subject.id
+            stats[sid]["subject_name"] = subject.name
+            stats[sid]["total_attempts"] += 1
+            stats[sid]["average_score"] += attempt.score
+            stats[sid]["average_percentage"] += attempt.percentage
 
-            if attempt.is_correct:
-                stats[subject_id]["correct_answers"] += 1
-
-        # calculate accuracy
-        for subject_id, data in stats.items():
-            if data["total_questions"] > 0:
-                data["accuracy_percent"] = int(
-                    (data["correct_answers"] / data["total_questions"]) * 100
+        for data in stats.values():
+            if data["total_attempts"] > 0:
+                data["average_score"] = round(
+                    data["average_score"] / data["total_attempts"], 2
+                )
+                data["average_percentage"] = round(
+                    data["average_percentage"] / data["total_attempts"], 2
                 )
 
-        # sort weakest → strongest
         results = sorted(
             stats.values(),
-            key=lambda x: x["accuracy_percent"]
+            key=lambda x: x["average_percentage"]
         )
 
         return Response(results)
-    
-# Topic level analytics view
+
+
+# Topic level analytics
 class TopicAnalyticsView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
         attempts = (
-            QuestionAttempt.objects
-            .filter(exam__user=request.user)
-            .select_related(
-                "question__subtopic__topic__subject"
-            )
+            ExamAttempt.objects
+            .filter(user=request.user)
+            .select_related("subject")
         )
 
         stats = defaultdict(lambda: {
-            "topic_id": None,
-            "topic_name": None,
+            "subject_id": None,
             "subject_name": None,
-            "total_questions": 0,
-            "correct_answers": 0,
-            "accuracy_percent": 0,
+            "total_attempts": 0,
+            "average_percentage": 0,
         })
 
         for attempt in attempts:
-            topic = attempt.question.subtopic.topic
-            topic_id = topic.id
+            subject = attempt.subject
+            sid = subject.id
 
-            stats[topic_id]["topic_id"] = topic.id
-            stats[topic_id]["topic_name"] = topic.title
-            stats[topic_id]["subject_name"] = topic.subject.name
-            stats[topic_id]["total_questions"] += 1
+            stats[sid]["subject_id"] = subject.id
+            stats[sid]["subject_name"] = subject.name
+            stats[sid]["total_attempts"] += 1
+            stats[sid]["average_percentage"] += attempt.percentage
 
-            if attempt.is_correct:
-                stats[topic_id]["correct_answers"] += 1
-
-        for topic_id, data in stats.items():
-            if data["total_questions"] > 0:
-                data["accuracy_percent"] = int(
-                    (data["correct_answers"] / data["total_questions"]) * 100
+        for data in stats.values():
+            if data["total_attempts"] > 0:
+                data["average_percentage"] = round(
+                    data["average_percentage"] / data["total_attempts"], 2
                 )
 
-        # weakest topics first
         results = sorted(
             stats.values(),
-            key=lambda x: x["accuracy_percent"]
+            key=lambda x: x["average_percentage"]
         )
 
-        return Response(results)    
+        return Response(results)
 
-# Sub-topic level analytics
-class SubtopicAnalyticsView(APIView):
+
+# Weak areas (failed questions)
+class WeakAreasView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        attempts = (
-            QuestionAttempt.objects
-            .filter(exam__user=request.user)
-            .select_related(
-                "question__subtopic__topic__subject"
-            )
+        failed = (
+            request.user.examattempt_set
+            .prefetch_related("failed_questions__question__subject")
         )
 
         stats = defaultdict(lambda: {
-            "subtopic_id": None,
-            "subtopic_name": None,
-            "topic_name": None,
+            "subject_id": None,
             "subject_name": None,
-            "total_questions": 0,
-            "correct_answers": 0,
-            "accuracy_percent": 0,
+            "failed_count": 0,
         })
 
-        for attempt in attempts:
-            subtopic = attempt.question.subtopic
-            sid = subtopic.id
+        for attempt in failed:
+            for fq in attempt.failed_questions.all():
+                subject = fq.question.subject
+                sid = subject.id
 
-            stats[sid]["subtopic_id"] = subtopic.id
-            stats[sid]["subtopic_name"] = subtopic.title
-            stats[sid]["topic_name"] = subtopic.topic.title
-            stats[sid]["subject_name"] = subtopic.topic.subject.name
-            stats[sid]["total_questions"] += 1
+                stats[sid]["subject_id"] = subject.id
+                stats[sid]["subject_name"] = subject.name
+                stats[sid]["failed_count"] += 1
 
-            if attempt.is_correct:
-                stats[sid]["correct_answers"] += 1
-
-        for data in stats.values():
-            if data["total_questions"] > 0:
-                data["accuracy_percent"] = int(
-                    (data["correct_answers"] / data["total_questions"]) * 100
-                )
-
-        # weakest subtopics first
         results = sorted(
             stats.values(),
-            key=lambda x: x["accuracy_percent"]
+            key=lambda x: x["failed_count"],
+            reverse=True
         )
 
-        return Response(results)    
+        return Response(results)

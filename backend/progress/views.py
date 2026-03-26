@@ -1,115 +1,89 @@
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 
-from .models import ExamAttempt, QuestionAttempt
-from .serializers import ExamRetakeSerializer, ExamHistorySerializer
-from assessments.serializers import QuestionSerializer
+from .models import ExamAttempt, FailedQuestion
+from syllabus.models import Course, Subject
+from assessments.models import Question
 
-from django.http import HttpResponse
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-from reportlab.lib.styles import getSampleStyleSheet
 
-# Create your views here.
+PASS_MARK = 80  # percentage
 
-class ExamHistoryView(APIView):
-    permission_classes = [IsAuthenticated]
 
-    def get(self, request):
-        exams = ExamAttempt.objects.filter(
-            user=request.user
-        ).order_by("-created_at")
-
-        serializer = ExamHistorySerializer(exams, many=True)
-        return Response(serializer.data)
-
-class RetakeExamView(APIView):
+class SubmitExamView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        serializer = ExamRetakeSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        user = request.user
 
-        exam_id = serializer.validated_data["exam_id"]
+        course_id = request.data.get("course_id")
+        subject_id = request.data.get("subject_id")
+        answers = request.data.get("answers", [])
 
-        try:
-            exam = ExamAttempt.objects.get(
-                id=exam_id,
-                user=request.user,
-            )
-        except ExamAttempt.DoesNotExist:
-            return Response(
-                {"detail": "Exam not found."},
-                status=status.HTTP_404_NOT_FOUND,
-            )
+        course = Course.objects.get(id=course_id)
+        subject = Subject.objects.get(id=subject_id)
 
-        failed_attempts = QuestionAttempt.objects.filter(
-            exam=exam,
-            is_correct=False,
-        ).select_related("question")
+        total_questions = len(answers)
+        score = 0
 
-        if not failed_attempts.exists():
-            return Response(
-                {"detail": "No failed questions to retake."},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+        attempt = ExamAttempt.objects.create(
+            user=user,
+            course=course,
+            subject=subject,
+            score=0,
+            total_questions=total_questions
+        )
 
-        questions = [qa.question for qa in failed_attempts]
+        for item in answers:
+            question = Question.objects.get(id=item["question_id"])
+            selected = item["selected_option"]
 
-        return Response(
-            {
-                "questions": QuestionSerializer(questions, many=True).data,
-                "retake_of_exam": exam.id,
-            },
-            status=status.HTTP_200_OK,
-        )   
+            if selected == question.correct_option:
+                score += 1
+            else:
+                FailedQuestion.objects.create(
+                    attempt=attempt,
+                    question=question,
+                    selected_option=selected
+                )
 
+        # Calculate percentage
+        percentage = (score / total_questions) * 100 if total_questions > 0 else 0
 
+        # Determine pass/fail
+        passed = percentage >= PASS_MARK
 
+        # Save results
+        attempt.score = score
+        attempt.percentage = percentage
+        attempt.passed = passed
+        attempt.save()
 
-class ExamResultPDFView(APIView):
+        return Response({
+            "score": score,
+            "total": total_questions,
+            "percentage": round(percentage, 2),
+            "passed": passed
+        }, status=status.HTTP_200_OK)
+    
+class SubjectPerformanceView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get(self, request, exam_id):
-        try:
-            exam = ExamAttempt.objects.get(
-                id=exam_id,
-                user=request.user,
-            )
-        except ExamAttempt.DoesNotExist:
-            return Response(
-                {"detail": "Exam not found."},
-                status=404,
-            )
+    def get(self, request):
+        user = request.user
 
-        response = HttpResponse(content_type="application/pdf")
-        response["Content-Disposition"] = f'attachment; filename="exam_{exam.id}.pdf"'
+        attempts = ExamAttempt.objects.filter(user=user)
 
-        doc = SimpleDocTemplate(response)
-        styles = getSampleStyleSheet()
-        elements = []
+        data = []
 
-        elements.append(Paragraph(f"<b>GRID Exam Result</b>", styles["Title"]))
-        elements.append(Spacer(1, 12))
+        for attempt in attempts:
+            data.append({
+                "course": attempt.course.code,
+                "subject": attempt.subject.code,
+                "score": attempt.score,
+                "total": attempt.total_questions,
+                "date": attempt.created_at
+            })
 
-        elements.append(Paragraph(f"Score: {exam.score}%", styles["Normal"]))
-        elements.append(Paragraph(f"Passed: {'Yes' if exam.passed else 'No'}", styles["Normal"]))
-        elements.append(Paragraph(f"Date: {exam.created_at}", styles["Normal"]))
-        elements.append(Spacer(1, 20))
-
-        attempts = exam.question_attempts.select_related("question")
-
-        for qa in attempts:
-            q = qa.question
-            elements.append(Paragraph(f"<b>Q:</b> {q.question_text}", styles["Normal"]))
-            elements.append(Paragraph(
-                f"Your answer: {qa.selected_option} | Correct: {q.correct_option}",
-                styles["Normal"],
-            ))
-            if q.explanation:
-                elements.append(Paragraph(f"Explanation: {q.explanation}", styles["Italic"]))
-            elements.append(Spacer(1, 12))
-
-        doc.build(elements)
-        return response
+        return Response(data)    

@@ -1,9 +1,22 @@
 from django.db import models
+from syllabus.models import Course, Subject
 
 
 class Question(models.Model):
 
-    question_text = models.TextField()
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name="questions"
+    )
+
+    subject = models.ForeignKey(
+        Subject,
+        on_delete=models.CASCADE,
+        related_name="questions"
+    )
+
+    question_text = models.TextField(unique=True)
 
     option_a = models.CharField(max_length=255)
     option_b = models.CharField(max_length=255)

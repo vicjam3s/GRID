@@ -1,8 +1,7 @@
 from django.conf import settings
 from django.db import models
-from syllabus.models import Subject, Topic, Subtopic
+from syllabus.models import Subject, Topic
 
-# Create your models here.
 
 class ContentSource(models.Model):
     SOURCE_TYPE_CHOICES = (
@@ -24,7 +23,12 @@ class ContentSource(models.Model):
 
 
 class ContentDocument(models.Model):
-    source = models.ForeignKey(ContentSource, on_delete=models.CASCADE, related_name="documents")
+    source = models.ForeignKey(
+        ContentSource,
+        on_delete=models.CASCADE,
+        related_name="documents"
+    )
+
     uploaded_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
@@ -38,18 +42,32 @@ class ContentDocument(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Document {self.id}"
+
 
 class ContentChunk(models.Model):
-    document = models.ForeignKey(ContentDocument, on_delete=models.CASCADE, related_name="chunks")
+    document = models.ForeignKey(
+        ContentDocument,
+        on_delete=models.CASCADE,
+        related_name="chunks"
+    )
 
-    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, blank=True)
-    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, blank=True)
-    subtopic = models.ForeignKey(Subtopic, on_delete=models.SET_NULL, null=True, blank=True)
+    subject = models.ForeignKey(
+        Subject,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+
+    topic = models.ForeignKey(
+        Topic,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
 
     text = models.TextField()
 
     def __str__(self):
         return self.text[:60]
-    
-
-

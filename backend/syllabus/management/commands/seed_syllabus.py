@@ -1,88 +1,50 @@
 from django.core.management.base import BaseCommand
-from syllabus.models import Course, Subject, Topic, Subtopic
+from syllabus.models import Course, Subject
 
-from syllabus.data import PPL_SYLLABUS, CPL_SYLLABUS
+
+COMMON_SUBJECTS = [
+    ("AL", "Air Law"),
+    ("MET", "Meteorology"),
+    ("POF", "Principles of Flight"),
+    ("INS", "Instruments"),
+    ("OPS", "Operational Procedures"),
+    ("GNAV", "General Navigation"),
+    ("RNAV", "Radio Navigation"),
+    ("AF", "Airframes"),
+    ("ACP", "Aircraft Performance"),
+    ("HP", "Human Performance"),
+    ("FP", "Flight Planning"),
+    ("MB", "Mass and Balance"),
+]
+
+PPL_ONLY = [
+    ("COMMS", "Communications"),
+    ("PIST", "Piston Engines"),
+    ("DC", "DC Electrics"),
+]
+
+CPL_ONLY = [
+    ("GT", "Gas Turbine"),
+    ("AC", "AC Electrics"),
+]
 
 
 class Command(BaseCommand):
-    help = "Seed PPL and CPL syllabus for GRID"
 
-    def handle(self, *args, **options):
-        self.stdout.write(self.style.SUCCESS("Seeding syllabus..."))
+    def handle(self, *args, **kwargs):
 
-        self.seed_course(
-            code="PPL",
-            name="Private Pilot Licence",
-            syllabus=PPL_SYLLABUS,
-        )
+        ppl, _ = Course.objects.get_or_create(code="PPL", name="Private Pilot Licence")
+        cpl, _ = Course.objects.get_or_create(code="CPL", name="Commercial Pilot Licence")
 
-        self.seed_course(
-            code="CPL",
-            name="Commercial Pilot Licence",
-            syllabus=CPL_SYLLABUS,
-        )
-
-        self.stdout.write(self.style.SUCCESS("Syllabus seeding complete."))
-
-    def seed_course(self, code, name, syllabus):
-
-        course, _ = Course.objects.get_or_create(
-            code=code,
-            defaults={
-                "name": name,
-                "authority": "KCAA",
-            },
-        )
-
-        # Ensure course stays updated
-        course.name = name
-        course.authority = "KCAA"
-        course.save()
-
-        for subject_order, (subject_name, topics) in enumerate(syllabus.items(), start=1):
-
-            subject, _ = Subject.objects.get_or_create(
-                course=course,
-                name=subject_name,
-                defaults={"order": subject_order},
-            )
-
-            subject.order = subject_order
-            subject.save()
-
-            for topic_order, (topic_title, subtopics) in enumerate(topics.items(), start=1):
-
-                topic, _ = Topic.objects.get_or_create(
-                    subject=subject,
-                    title=topic_title,
-                    defaults={"order": topic_order},
+        def add_subjects(course, subjects):
+            for code, name in subjects:
+                Subject.objects.get_or_create(
+                    course=course,
+                    code=code,
+                    defaults={"name": name}
                 )
 
-                topic.order = topic_order
-                topic.save()
+        add_subjects(ppl, COMMON_SUBJECTS + PPL_ONLY)
+        add_subjects(cpl, COMMON_SUBJECTS + CPL_ONLY)
 
-                # Create or update subtopics
-                for subtopic_order, subtopic_title in enumerate(subtopics, start=1):
-
-                    subtopic, _ = Subtopic.objects.get_or_create(
-                        topic=topic,
-                        title=subtopic_title,
-                        defaults={"order": subtopic_order},
-                    )
-
-                    subtopic.order = subtopic_order
-                    subtopic.save()
-
-                # Remove obsolete subtopics
-                existing = set(
-                    Subtopic.objects.filter(topic=topic)
-                    .values_list("title", flat=True)
-                )
-
-                new = set(subtopics)
-
-                for obsolete in existing - new:
-                    Subtopic.objects.filter(
-                        topic=topic,
-                        title=obsolete
-                    ).delete()
+        self.stdout.write(self.style.SUCCESS("Syllabus seeded successfully"))

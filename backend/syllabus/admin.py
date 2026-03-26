@@ -1,52 +1,31 @@
 from django.contrib import admin
-from .models import Course, Subject, Topic, Subtopic, Note
+from .models import Course, Subject, Topic
 
 
-class ReadOnlyAdmin(admin.ModelAdmin):
-    """
-    Base admin class to make models fully read-only.
-    """
-
-    def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return False
+class SubjectInline(admin.TabularInline):
+    model = Subject
+    extra = 1
 
 
 @admin.register(Course)
-class CourseAdmin(ReadOnlyAdmin):
-    list_display = ("code", "name", "authority", "version")
-    ordering = ("code",)
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ("code", "name")
+    inlines = [SubjectInline]
+
+
+class TopicInline(admin.TabularInline):
+    model = Topic
+    extra = 1
 
 
 @admin.register(Subject)
-class SubjectAdmin(ReadOnlyAdmin):
-    list_display = ("name", "course", "order")
-    ordering = ("course", "order")
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ("code", "name", "course")
     list_filter = ("course",)
+    inlines = [TopicInline]
 
 
 @admin.register(Topic)
-class TopicAdmin(ReadOnlyAdmin):
-    list_display = ("title", "subject", "order")
-    ordering = ("subject", "order")
-    list_filter = ("subject__course", "subject")
-
-
-@admin.register(Subtopic)
-class SubtopicAdmin(ReadOnlyAdmin):
-    list_display = ("title", "topic", "order")
-    ordering = ("topic", "order")
-    list_filter = ("topic__subject__course", "topic__subject")
-
-
-@admin.register(Note)
-class NoteAdmin(admin.ModelAdmin):
-    list_display = ("title", "subtopic", "created_at")
-    search_fields = ("title", "content")
-    list_filter = ("subtopic__topic__subject__course", "subtopic__topic__subject", "subtopic")
-    readonly_fields = ("created_at",)
+class TopicAdmin(admin.ModelAdmin):
+    list_display = ("title", "subject")
+    list_filter = ("subject",)

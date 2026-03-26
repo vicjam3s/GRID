@@ -10,8 +10,9 @@ from .serializers import (
     ExamGenerateSerializer,
     ExamSubmitSerializer,
 )
-from progress.models import ExamAttempt, QuestionAttempt
+from progress.models import ExamAttempt, FailedQuestion
 from django.conf import settings
+from syllabus.models import Course, Subject
 
 
 class GenerateExamView(APIView):
@@ -25,7 +26,7 @@ class GenerateExamView(APIView):
         num_questions = serializer.validated_data["num_questions"]
 
         questions = Question.objects.filter(
-            subtopic__topic__subject__course__code=course_code,
+            subject__course__code=course_code,
             is_active=True,
         )
 
@@ -51,6 +52,8 @@ class SubmitExamView(APIView):
         serializer.is_valid(raise_exception=True)
 
         answers = serializer.validated_data["answers"]
+        course_id = serializer.validated_data["course_id"]
+        subject_id = serializer.validated_data["subject_id"]
 
         questions = Question.objects.filter(
             id__in=[a["question_id"] for a in answers]
@@ -63,8 +66,11 @@ class SubmitExamView(APIView):
 
         exam = ExamAttempt.objects.create(
             user=request.user,
+            course_id=course_id,
+            subject_id=subject_id,
             total_questions=len(answers),
             score=0,
+            percentage=0,
             passed=False,
         )
 
@@ -73,9 +79,8 @@ class SubmitExamView(APIView):
             if not question:
                 continue
 
-            is_correct = (
-                answer["selected_option"] == question.correct_option
-            )
+            selected = answer["selected_option"]
+            is_correct = selected == question.correct_option
 
             if is_correct:
                 correct_count += 1
@@ -87,23 +92,26 @@ class SubmitExamView(APIView):
                     "explanation": question.explanation,
                 })
 
-            QuestionAttempt.objects.create(
-                exam=exam,
-                question=question,
-                selected_option=answer["selected_option"],
-                is_correct=is_correct,
-            )
+                FailedQuestion.objects.create(
+                    attempt=exam,
+                    question=question,
+                    selected_option=selected,
+                )
 
-        score_percent = int((correct_count / len(answers)) * 100)
-        passed = score_percent >= settings.EXAM_PASS_MARK_PERCENT
+        total = len(answers)
+        percentage = (correct_count / total) * 100 if total > 0 else 0
+        passed = percentage >= settings.EXAM_PASS_MARK_PERCENT
 
-        exam.score = score_percent
+        exam.score = correct_count
+        exam.percentage = percentage
         exam.passed = passed
         exam.save()
 
         return Response(
             {
-                "score": score_percent,
+                "score": correct_count,
+                "total": total,
+                "percentage": round(percentage, 2),
                 "passed": passed,
                 "failed_questions": failed_questions,
             },

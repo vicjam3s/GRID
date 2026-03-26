@@ -2,15 +2,13 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from django.shortcuts import render
 
 from pypdf import PdfReader
 
 from .models import ContentSource, ContentDocument, ContentChunk
 from .serializers import ContentUploadSerializer, ContentChunkSerializer
-from syllabus.models import Subtopic
+from syllabus.models import Subject, Topic
 
-# Create your views here.
 
 class ContentUploadView(APIView):
     permission_classes = [IsAuthenticated]
@@ -20,7 +18,17 @@ class ContentUploadView(APIView):
         serializer.is_valid(raise_exception=True)
 
         file = serializer.validated_data["file"]
-        subtopic = Subtopic.objects.get(id=serializer.validated_data["subtopic_id"])
+        subject_id = serializer.validated_data.get("subject_id")
+        topic_id = serializer.validated_data.get("topic_id")
+
+        subject = None
+        topic = None
+
+        if subject_id:
+            subject = Subject.objects.get(id=subject_id)
+
+        if topic_id:
+            topic = Topic.objects.get(id=topic_id)
 
         # Create content source
         source = ContentSource.objects.create(
@@ -34,7 +42,7 @@ class ContentUploadView(APIView):
             file=file,
         )
 
-        # Extract text
+        # Extract text from PDF
         reader = PdfReader(document.file)
         full_text = ""
 
@@ -47,16 +55,15 @@ class ContentUploadView(APIView):
         document.processed = True
         document.save()
 
-        # Chunk text (simple paragraph-based chunking)
+        # Chunk text (paragraph-based)
         paragraphs = [p.strip() for p in full_text.split("\n\n") if p.strip()]
 
         for para in paragraphs:
             ContentChunk.objects.create(
                 document=document,
-                subtopic=subtopic,
-                topic=subtopic.topic,
-                subject=subtopic.topic.subject,
-                text=para[:2000],  # safety limit
+                subject=subject,
+                topic=topic,
+                text=para[:2000],
             )
 
         return Response(
@@ -65,12 +72,14 @@ class ContentUploadView(APIView):
         )
 
 
-class SubtopicNotesView(APIView):
+class TopicNotesView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get(self, request, subtopic_id):
+    def get(self, request):
+        topic_id = request.GET.get("topic")
+
         chunks = ContentChunk.objects.filter(
-            subtopic_id=subtopic_id,
+            topic_id=topic_id,
             document__uploaded_by=request.user,
         )
 

@@ -1,15 +1,18 @@
 from django.contrib import admin
-from .models import ExamAttempt, QuestionAttempt
+from .models import ExamAttempt, FailedQuestion
 
-# Register your models here.
+
+class FailedQuestionInline(admin.TabularInline):
+    model = FailedQuestion
+    extra = 0
+
 
 @admin.register(ExamAttempt)
 class ExamAttemptAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "score", "passed", "created_at")
-    list_filter = ("passed", "created_at")
+    list_display = ("user", "course", "subject", "score", "total_questions", "created_at")
+    inlines = [FailedQuestionInline]
 
 
-@admin.register(QuestionAttempt)
-class QuestionAttemptAdmin(admin.ModelAdmin):
-    list_display = ("exam", "question", "selected_option", "is_correct")
-    list_filter = ("is_correct",)
+@admin.register(FailedQuestion)
+class FailedQuestionAdmin(admin.ModelAdmin):
+    list_display = ("attempt", "question", "selected_option")

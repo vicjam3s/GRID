@@ -2,96 +2,38 @@ from django.db import models
 
 
 class Course(models.Model):
-
-    COURSE_CHOICES = (
-        ("PPL", "Private Pilot Licence"),
-        ("CPL", "Commercial Pilot Licence"),
-    )
-
-    code = models.CharField(max_length=10, choices=COURSE_CHOICES, unique=True)
-    name = models.CharField(max_length=100)
-    authority = models.CharField(max_length=50, default="KCAA")
-    version = models.CharField(max_length=20, blank=True)
+    code = models.CharField(max_length=10, unique=True)
+    name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.code
 
 
 class Subject(models.Model):
-
     course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
         related_name="subjects"
     )
 
-    name = models.CharField(max_length=100)
-
-    order = models.PositiveIntegerField()
+    code = models.CharField(max_length=10)
+    name = models.CharField(max_length=255)
 
     class Meta:
-        ordering = ["order"]
-        unique_together = ("course", "name")
+        unique_together = ("course", "code")
 
     def __str__(self):
-        return f"{self.course.code} - {self.name}"
+        return f"{self.course.code} - {self.code}"
 
 
 class Topic(models.Model):
-
     subject = models.ForeignKey(
         Subject,
         on_delete=models.CASCADE,
         related_name="topics"
     )
 
-    title = models.CharField(max_length=150)
-
-    order = models.PositiveIntegerField()
-
-    class Meta:
-        ordering = ["order"]
-        unique_together = ("subject", "title")
+    title = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.title
-
-
-class Subtopic(models.Model):
-
-    topic = models.ForeignKey(
-        Topic,
-        on_delete=models.CASCADE,
-        related_name="subtopics"
-    )
-
-    title = models.CharField(max_length=150)
-
-    order = models.PositiveIntegerField()
-
-    class Meta:
-        ordering = ["order"]
-        unique_together = ("topic", "title")
-
-    def __str__(self):
-        return self.title
-
-class Note(models.Model):
-
-    subtopic = models.ForeignKey(
-        Subtopic,
-        on_delete=models.CASCADE,
-        related_name="notes"
-    )
-
-    title = models.CharField(max_length=200)
-
-    content = models.TextField()
-
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ["subtopic", "title"]
-
-    def __str__(self):
-        return self.title    
+        return f"{self.subject.code} - {self.title}"
