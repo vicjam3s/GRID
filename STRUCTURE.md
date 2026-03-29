@@ -389,3 +389,11 @@ GRID_BACKEND/
 │   ├── models.py          # FlightPlan, Aircraft, Logbook models
 │   └── calculations.py    # Logic for Heading, Wind Correction, Fuel
 └── static_assets/         # For "Charts" (PDFs, Diagrams)
+
+FLIGHT PLANNER BACKEND:
+
+backend/
+    aerodromes/        ← airport + runway + comms
+    weather/           ← METAR, TAF, winds, NOTAMs
+    procedures/        ← SIDs, STARs, charts
+    maps/              ← GeoJSON endpoints

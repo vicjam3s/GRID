@@ -51,6 +51,10 @@ INSTALLED_APPS = [
     'analytics',
     'corsheaders',
     'resources',
+    'aerodromes',
+    'weather',
+    'procedures',
+    'maps',
 
 ]
 
