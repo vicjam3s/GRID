@@ -376,3 +376,16 @@ POST /api/progress/submit/
     {"question_id": 11, "selected_option": "C"}
   ]
 }
+
+GRID_BACKEND/
+├── core/                  # Main settings and wsgi
+├── api/                   # The entry point for your React frontend
+│   ├── serializers.py     # Converts PostGIS objects to GeoJSON
+│   └── views.py           # Handles requests like "Get airports near me"
+├── aeronautical/          # The "World" data (Static)
+│   ├── models.py          # Airport, Runway, Airspace models
+│   └── management/        # Scripts to import KCAA data from CSV/PDF
+├── operations/            # User-specific data (Dynamic)
+│   ├── models.py          # FlightPlan, Aircraft, Logbook models
+│   └── calculations.py    # Logic for Heading, Wind Correction, Fuel
+└── static_assets/         # For "Charts" (PDFs, Diagrams)
