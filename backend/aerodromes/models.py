@@ -18,6 +18,24 @@ class Aerodrome(models.Model):
 
     magnetic_variation = models.FloatField(help_text="Degrees East (+) / West (-)")
     timezone = models.CharField(max_length=10, default="UTC+3")
+        # ==============================
+    # OPERATIONAL STATUS (AIP-ALIGNED)
+    # ==============================
+    STATUS_CHOICES = [
+        ("OPEN", "Open"),
+        ("CLOSED", "Closed"),
+        ("RESTRICTED", "Restricted"),
+        ("MILITARY", "Military"),
+    ]
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="OPEN"
+    )
+
+    # Controlled vs uncontrolled aerodrome
+    is_controlled = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.icao_code} - {self.name}"
@@ -38,6 +56,22 @@ class Runway(models.Model):
         ("LEFT", "Left"),
         ("RIGHT", "Right"),
     ]
+
+        # ==============================
+    # RUNWAY SERVICEABILITY STATUS
+    # ==============================
+    STATUS_CHOICES = [
+        ("OPEN", "Open"),
+        ("CLOSED", "Closed"),
+        ("UNSERVICEABLE", "Unserviceable"),
+        ("RESTRICTED", "Restricted"),
+    ]
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="OPEN"
+    )
 
     aerodrome = models.ForeignKey(
         Aerodrome,
