@@ -13,6 +13,8 @@ class AerodromeGeoSerializer(GeoFeatureModelSerializer):
             "name",
             "city",
             "elevation_ft",
+            "status",
+
         )
 
 class RunwaySerializer(serializers.ModelSerializer):
