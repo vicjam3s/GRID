@@ -1,6 +1,7 @@
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from aerodromes.models import Aerodrome, Runway, Communication, FBO
 from rest_framework import serializers
+from .models import Airspace
 
 class AerodromeGeoSerializer(GeoFeatureModelSerializer):
     class Meta:
@@ -43,3 +44,19 @@ class AerodromeDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aerodrome
         fields = "__all__"
+
+
+
+
+
+class AirspaceGeoSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = Airspace
+        geo_field = "boundary"
+        fields = (
+            "id",
+            "name",
+            "airspace_type",
+            "lower_limit_ft",
+            "upper_limit_ft",
+        )
