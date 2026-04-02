@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib.gis import admin
 from .models import Aerodrome, Runway, Communication, FBO
 
 
@@ -26,7 +26,7 @@ class FBOInline(admin.TabularInline):
 # ==============================
 
 @admin.register(Aerodrome)
-class AerodromeAdmin(admin.ModelAdmin):
+class AerodromeAdmin(admin.GISModelAdmin):
     list_display = (
         "icao_code",
         "name",
