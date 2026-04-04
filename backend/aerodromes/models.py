@@ -18,7 +18,7 @@ class Aerodrome(models.Model):
 
     magnetic_variation = models.FloatField(help_text="Degrees East (+) / West (-)")
     timezone = models.CharField(max_length=10, default="UTC+3")
-        # ==============================
+    # ==============================
     # OPERATIONAL STATUS (AIP-ALIGNED)
     # ==============================
     STATUS_CHOICES = [
@@ -50,6 +50,8 @@ class Runway(models.Model):
         ("CONCRETE", "Concrete"),
         ("GRASS", "Grass"),
         ("GRAVEL", "Gravel"),
+        ("DIRT", "Dirt"),
+        ("CABRO", "Cabro"),
     ]
 
     TRAFFIC_PATTERN_CHOICES = [
@@ -57,7 +59,7 @@ class Runway(models.Model):
         ("RIGHT", "Right"),
     ]
 
-        # ==============================
+    # ==============================
     # RUNWAY SERVICEABILITY STATUS
     # ==============================
     STATUS_CHOICES = [
@@ -79,7 +81,7 @@ class Runway(models.Model):
         on_delete=models.CASCADE
     )
 
-    identifier = models.CharField(max_length=10)  # e.g. 06/24
+    identifier = models.CharField(max_length=10)
 
     length_ft = models.IntegerField()
     width_ft = models.IntegerField()
@@ -114,12 +116,16 @@ class Runway(models.Model):
 class Communication(models.Model):
     SERVICE_CHOICES = [
         ("ATIS", "ATIS"),
+        ("UNMANNED", "Unmanned Frequency"),
         ("AWOS", "AWOS"),
         ("CLEARANCE", "Clearance Delivery"),
         ("GROUND", "Ground"),
         ("TOWER", "Tower"),
         ("APPROACH", "Approach"),
         ("DEPARTURE", "Departure"),
+        ("CENTER", "Center"),
+        ("RADAR", "Radar"),
+
     ]
 
     aerodrome = models.ForeignKey(
