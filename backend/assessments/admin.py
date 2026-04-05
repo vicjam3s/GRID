@@ -5,13 +5,21 @@ from .models import Question
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
 
-    list_display = ("short_question", "correct_option", "is_active")
+    list_display = ("question_source", "short_question", "correct_option", "is_active")
 
     search_fields = ("question_text",)
 
-    list_filter = ("is_active",)
+    list_filter = ("is_active", "question_source")
 
     fieldsets = (
+
+        ("Metadata", {
+            "fields": (
+                "course",
+                "subject",
+                "question_source",
+            )
+        }),
 
         ("Question", {
             "fields": ("question_text",)
